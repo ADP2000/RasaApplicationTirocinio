@@ -1,0 +1,100 @@
+version: "3.1"
+
+nlu:
+
+- intent: greet
+  examples: |
+    - ciao
+    - buongiorno
+    - buonasera
+    - salve
+    - ciao,sono [Antonio](name)
+    - salve, mi chiamo [Antonio](name)
+    - ciao sono [antonio](name)
+
+- intent: goodbye
+  examples: |
+    - arrivederci
+    - alla prossima volta
+    - ci vediamo presto
+    - addio
+    - grazie e arrivederci
+    - ciao ciao
+
+- intent: affirm
+  examples: |
+    - si
+    - s
+    - si mi va
+    - certo
+    - certamente
+    - corretto
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - mai
+    - no, grazie
+    - non mi piace giocare
+    - in realta' no
+    - in questo momento no
+    - adesso no
+
+- intent: mood_great
+  examples: |
+    - molto bene
+    - bene
+    - mi sento splenditamente bene
+    - tutto ok
+    - oggi sto molto bene
+    - mi sento in forma
+    - sono molto felice
+    - ottimamente
+    - bene grazie
+
+- intent: bot_challenge
+  examples: |
+    - sei un bot?
+    - sei un uomo?
+    - sto parlando con un bot?
+    - sto parlando con un uomo?
+    - con chi sto parlando?
+
+- intent: restart
+  examples: |
+    - restart
+    - restart la conversazione
+
+- intent: smetti_gioco
+  examples: |
+    - non voglio più giocare
+    - basta giocare
+    - non voglio piu rispondere 
+    - vado via
+    - grazie per avermi fatto giocare
+    - non voglio piu giocare
+
+- intent: voglio_continuare
+  examples: |
+    - voglio continuare a giocare
+    - continiuamo a giocare
+    - si continuiamo
+
+- intent: gioco
+  examples: |
+    - iniziamo
+    - sono pronto, iniziamo
+    - ok, iniziamo
+
+- intent: inform
+  examples: |
+    - [1-A-2-B-3-C-4-D-5-E-6-F-7-G-8-H-9-I-10-J-11-K-12-L-13-M-14-N-15-O-16-P-17-Q-18-R-19-S-20-T](alfabeto)
+    - [2-A-2-B-3-C-4-D-5-E-6-F-7-G-8-H-9-I-10-J-11-K-12-L-13-M-14-N-15-O-16-P-17-Q-18-R-19-S-20-T](alfabeto)
+    - [3-A-2-B-3-C-4-D-5-E-6-F-7-G-8-H-9-I-10-J-11-K-12-L-13-M-14-N-15-O-16-P-17-Q-18-R-19-S-20-T](alfabeto)
+    - [4-A-2-B-3-C-4-D-5-E-6-F-7-G-8-H-9-I-10-J-11-K-12-L-13-M-14-N-15-O-16-P-17-Q-18-R-19-S-20-T](alfabeto)
+    - [5-A-2-B-3-C-4-D-5-E-6-F-7-G-8-H-9-I-10-J-11-K-12-L-13-M-14-N-15-O-16-P-17-Q-18-R-19-S-20-T](alfabeto)
+    - [6-A-2-B-3-C-4-D-5-E-6-F-7-G-8-H-9-I-10-J-11-K-12-L-13-M-14-N-15-O-16-P-17-Q-18-R-19-S-20-T](alfabeto)
+    - [7-A-2-B-3-C-4-D-5-E-6-F-7-G-8-H-9-I-10-J-11-K-12-L-13-M-14-N-15-O-16-P-17-Q-18-R-19-S-20-T](alfabeto)
+    - [8-A-2-B-3-C-4-D-5-E-6-F-7-G-8-H-9-I-10-J-11-K-12-L-13-M-14-N-15-O-16-P-17-Q-18-R-19-S-20-T](alfabeto)
+    - [9-A-2-B-3-C-4-D-5-E-6-F-7-G-8-H-9-I-10-J-11-K-12-L-13-M-14-N-15-O-16-P-17-Q-18-R-19-S-20-T](alfabeto)

@@ -1,0 +1,147 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - smetti_gioco
+  - voglio_continuare
+  - mood_great
+  - bot_challenge
+  - gioco
+  - inform
+
+entities:
+- name
+- domanda1
+- domanda2
+- domanda3
+- domanda4
+
+slots:
+  name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: name
+  domanda1:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda1
+  domanda2:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda2
+  domanda3:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda3
+  domanda4:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda4
+  numero_risposte_giuste:
+    type: float
+    influence_conversation: false
+    mappings:
+    - type: custom
+
+  
+forms: 
+  play_form:
+    required_slots:
+    - domanda1
+    - domanda2
+    - domanda3
+    - domanda4
+
+responses:
+  utter_greet:
+  - text: Hey ciao! Come stai?
+  - text: Ciao {name}, come stai?
+  - text: Ehilà, come va?
+
+  utter_vuoi_giocare:
+  - text: Vogliamo iniziare un nuovo gioco?
+    buttons:
+    - title: Si
+      payload: /affirm
+    - title: No
+      payload: /deny
+
+  utter_descrizione_gioco:
+  - text: |- 
+      OK! Ti presento allora il funzionamento di questo gioco. Dovrai leggere un racconto e, una volta 
+      letto, io ti farò delle domande specifiche sulla storia che hai letto.
+
+  utter_ask_continue:
+  - text: Vuoi continuare a giocare?
+
+  utter_ask_continueplay:
+  - text: Sei sicuro di non voler piu giocare?
+
+  utter_happy:
+  - text: Sono felice :-)!
+
+  utter_conferma_gioco:
+  - text: |-
+      Ora se sei pronto per cominciare digita "iniziamo"
+
+  utter_goodbye:
+  - text: E' stato un piacere
+  - text: Alla prossima
+  - text: Arrivederci
+
+  utter_iamabot:
+  - text: In questo momento stai parlando con un  bot.
+
+  utter_gioco_finito:
+  - text: Il gioco è finito. Hai risposto correttamente a {numero_risposte_giuste} domande.
+
+  utter_restart:
+  - text: Se vuoi ricominciare il gioco digita 'restart'
+
+  utter_giochiamo_ancora:
+  - text: Digita di nuovo 'iniziamo' per giocare di nuovo
+
+  utter_storia:
+  - text: |-
+      C’era una volta una volpe che vagava tranquilla per il bosco. Aveva appena bevuto ad un ruscello e si stava avventurando in cerca di cibo verso i campi coltivati, appena fuori dal paesello vicino.
+      Era già mattina inoltrata, e la fame iniziava a farsi sentire con sonori brontolii provenienti dal pancino.
+      Ad un certo punto, dopo aver camminato per un po’, vide una bella vigna piena di bellissimi grappoli d’uva.
+      La volpe controllò che non ci fossero pericoli in vista e si avvicinò furtiva ad uno dei grappoli, quello che le sembrava più vicino.
+      Non c’era nessuno nelle vicinanze. Era il momento perfetto per fare un bel salto e prendersi il grappolo d’uva!
+      La volpe quindi prese la rincorsa e… hop! Fece un balzo cercando di afferrare coi denti il grappolo, ma niente: non ci arrivò.
+      La volpe allora prese un po’ più di rincorsa e hop! Fece un altro balzo, ma anche questo non era abbastanza alto per riuscire ad arrivare al grappolo d’uva.
+      La volpe allora provò a prendere una rincorsa ancora più lunga e hop! Niente, non arrivò a prendere il grappolo d’uva.
+      Intanto il suo pancino brontolava sempre più dalla fame.
+      La volpe provò e riprovò. Le mancava sempre un soffio per prendere il grappolo d’uva ma non c’era verso, non riusciva ad arrivarci.
+      Stremata dalla fatica e dalla fame, la povera volpe guardò se nella vigna c’erano altri grappoli, magari più bassi, da poter prendere. Ma niente, erano tutti più in alto di quel grappolo che lei aveva cercato con tutte le sue forze di acciuffare.
+      La volpe diede un ultimo lungo sguardo al bel grappolo d’uva che tanto aveva sognato di mangiare, e per non ammettere di non essere riuscita nella sua impresa, si disse:
+      "Meglio così, tanto di sicuro quel grappolo era ancora acerbo e mangiarlo mi avrebbe solo fatto venire mal di pancia! "" anche se sapeva benissimo che non era vero.
+      Così, sconsolata e ancora più affamata, ritornò con la coda tra le gambe nel suo boschetto. Si mise a caccia di qualcos’altro da mangiare, cercando questa volta di adocchiare qualcosa che avrebbe sicuramente preso.
+
+utter_ask_continueplay:
+  - text: Sei sicuro di non voler piu giocare?
+
+actions:
+- action_restart
+- action_ask_domanda1
+- action_ask_domanda2
+- action_ask_domanda3
+- action_ask_domanda4
+- validate_play_form
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

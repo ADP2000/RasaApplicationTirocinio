@@ -1,0 +1,161 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - smetti_gioco
+  - voglio_continuare
+  - mood_great
+  - bot_challenge
+  - gioco
+  - inform
+
+entities:
+- name
+- domanda1
+
+slots:
+  name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: name
+  passo1:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda1
+  passo2:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda1
+  passo3:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda1
+  passo4:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda1
+  passo5:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda1
+  passo6:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda1
+  passo7:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda1
+  passo8:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda1
+  numero_errori:
+    type: float
+    influence_conversation: false
+    mappings:
+    - type: custom
+
+  
+forms: 
+  play_form:
+    required_slots:
+    - passo1
+    - passo2
+    - passo3
+    - passo4
+    - passo5
+    - passo6
+    - passo7
+    - passo8
+    
+
+responses:
+  utter_greet:
+  - text: Hey ciao! Come stai?
+  - text: Ciao {name}, come stai?
+  - text: Ehilà, come va?
+
+  utter_vuoi_giocare:
+  - text: Vogliamo iniziare un nuovo gioco?
+    buttons:
+    - title: Si
+      payload: /affirm
+    - title: No
+      payload: /deny
+
+  utter_descrizione_gioco:
+  - text: |- 
+      OK! Ti presento allora il funzionamento di questo gioco. Dovrai mostrarmi il procedimento per portare
+      a termine alcuni compiti.
+
+  utter_ask_continue:
+  - text: Vuoi continuare a giocare?
+
+  utter_ask_continueplay:
+  - text: Sei sicuro di non voler piu giocare?
+
+  utter_happy:
+  - text: Sono felice :-)!
+
+  utter_conferma_gioco:
+  - text: |-
+      Ora se sei pronto per cominciare digita "iniziamo"
+
+  utter_goodbye:
+  - text: E' stato un piacere
+  - text: Alla prossima
+  - text: Arrivederci
+
+  utter_iamabot:
+  - text: In questo momento stai parlando con un  bot.
+
+  utter_gioco_finito:
+  - text: Il gioco è finito. Hai sbagliato {numero_errori} volte.
+
+  utter_restart:
+  - text: Se vuoi ricominciare il gioco digita 'restart'
+
+  utter_giochiamo_ancora:
+  - text: Digita di nuovo 'iniziamo' per giocare di nuovo
+
+  
+utter_ask_continueplay:
+  - text: Sei sicuro di non voler piu giocare?
+
+actions:
+- action_restart
+- action_ask_passo1
+- action_ask_passo2
+- action_ask_passo3
+- action_ask_passo4
+- action_ask_passo5
+- action_ask_passo6
+- action_ask_passo7
+- action_ask_passo8
+- validate_play_form
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

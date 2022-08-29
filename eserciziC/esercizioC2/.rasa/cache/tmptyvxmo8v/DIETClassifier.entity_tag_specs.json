@@ -1,0 +1,44 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-frutta",
+      "2": "I-frutta",
+      "3": "L-frutta",
+      "4": "U-frutta",
+      "5": "B-igiene_personale",
+      "6": "I-igiene_personale",
+      "7": "L-igiene_personale",
+      "8": "U-igiene_personale",
+      "9": "B-macelleria",
+      "10": "I-macelleria",
+      "11": "L-macelleria",
+      "12": "U-macelleria",
+      "13": "B-name",
+      "14": "I-name",
+      "15": "L-name",
+      "16": "U-name",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-frutta": 1,
+      "I-frutta": 2,
+      "L-frutta": 3,
+      "U-frutta": 4,
+      "B-igiene_personale": 5,
+      "I-igiene_personale": 6,
+      "L-igiene_personale": 7,
+      "U-igiene_personale": 8,
+      "B-macelleria": 9,
+      "I-macelleria": 10,
+      "L-macelleria": 11,
+      "U-macelleria": 12,
+      "B-name": 13,
+      "I-name": 14,
+      "L-name": 15,
+      "U-name": 16,
+      "O": 0
+    },
+    "num_tags": 17
+  }
+]

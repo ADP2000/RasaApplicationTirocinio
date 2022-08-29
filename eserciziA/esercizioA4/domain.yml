@@ -1,0 +1,151 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - smetti_gioco
+  - voglio_continuare
+  - mood_great
+  - bot_challenge
+  - gioco
+  - inform
+
+entities:
+- name
+- domanda1
+- domanda2
+- domanda3
+- domanda4
+- domanda5
+
+slots:
+  name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: name
+  domanda1:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda1
+  domanda2:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda2
+  domanda3:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda3
+  domanda4:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda4
+  domanda5:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda5
+  numero_risposte_giuste:
+    type: float
+    influence_conversation: false
+    mappings:
+    - type: custom
+
+  
+forms: 
+  play_form:
+    required_slots:
+    - domanda1
+    - domanda2
+    - domanda3
+    - domanda4
+    - domanda5
+
+responses:
+  utter_greet:
+  - text: Hey ciao! Come stai?
+  - text: Ciao {name}, come stai?
+  - text: Ehilà, come va?
+
+  utter_vuoi_giocare:
+  - text: Vogliamo iniziare un nuovo gioco?
+    buttons:
+    - title: Si
+      payload: /affirm
+    - title: No
+      payload: /deny
+
+  utter_descrizione_gioco:
+  - text: |- 
+      OK! Ti presento allora il funzionamento di questo gioco. Dovrai leggere un racconto e, una volta 
+      letto, io ti farò delle domande specifiche sulla storia che hai letto.
+
+  utter_ask_continue:
+  - text: Vuoi continuare a giocare?
+
+  utter_ask_continueplay:
+  - text: Sei sicuro di non voler piu giocare?
+
+  utter_happy:
+  - text: Sono felice :-)!
+
+  utter_conferma_gioco:
+  - text: |-
+      Ora se sei pronto per cominciare digita "iniziamo"
+
+  utter_goodbye:
+  - text: E' stato un piacere
+  - text: Alla prossima
+  - text: Arrivederci
+
+  utter_iamabot:
+  - text: In questo momento stai parlando con un  bot.
+
+  utter_gioco_finito:
+  - text: Il gioco è finito. Hai risposto correttamente a {numero_risposte_giuste} domande.
+
+  utter_restart:
+  - text: Se vuoi ricominciare il gioco digita 'restart'
+
+  utter_giochiamo_ancora:
+  - text: Digita di nuovo 'iniziamo' per giocare di nuovo
+
+  utter_storia:
+  - text: |-
+      Un asino che portava un carico di sale si trovò a dover attraversare un fiume; 
+      tuttavia, l’asino scivolò e cadde in acqua: così, tutto il sale che portava nei 
+      cesti sulla schiena si sciolse e l’animale si rialzò con un carico molto più leggero. 
+      L’asino fu ben contento della cosa! Qualche tempo dopo, lo stesso asino stava portando un carico di spugne 
+      sulla riva di un fiume; ricordandosi di quello che era successo con il sale, pensò che se si fosse 
+      lasciato cadere in acqua, anche questa volta il carico sarebbe diventato più leggero. 
+      Questa volta, le spugne imbevute d’acqua si gonfiarono, così tanto che l’asino, a causa del loro peso,
+      non riuscì più ad uscire dall’acqua e fu trascinato via dalla corrente.
+
+
+utter_ask_continueplay:
+  - text: Sei sicuro di non voler piu giocare?
+
+actions:
+- action_restart
+- action_ask_domanda1
+- action_ask_domanda2
+- action_ask_domanda3
+- action_ask_domanda4
+- action_ask_domanda5
+- validate_play_form
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

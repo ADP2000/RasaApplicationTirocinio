@@ -1,0 +1,52 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-domanda1",
+      "2": "I-domanda1",
+      "3": "L-domanda1",
+      "4": "U-domanda1",
+      "5": "B-domanda2",
+      "6": "I-domanda2",
+      "7": "L-domanda2",
+      "8": "U-domanda2",
+      "9": "B-domanda3",
+      "10": "I-domanda3",
+      "11": "L-domanda3",
+      "12": "U-domanda3",
+      "13": "B-domanda4",
+      "14": "I-domanda4",
+      "15": "L-domanda4",
+      "16": "U-domanda4",
+      "17": "B-name",
+      "18": "I-name",
+      "19": "L-name",
+      "20": "U-name",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-domanda1": 1,
+      "I-domanda1": 2,
+      "L-domanda1": 3,
+      "U-domanda1": 4,
+      "B-domanda2": 5,
+      "I-domanda2": 6,
+      "L-domanda2": 7,
+      "U-domanda2": 8,
+      "B-domanda3": 9,
+      "I-domanda3": 10,
+      "L-domanda3": 11,
+      "U-domanda3": 12,
+      "B-domanda4": 13,
+      "I-domanda4": 14,
+      "L-domanda4": 15,
+      "U-domanda4": 16,
+      "B-name": 17,
+      "I-name": 18,
+      "L-name": 19,
+      "U-name": 20,
+      "O": 0
+    },
+    "num_tags": 21
+  }
+]

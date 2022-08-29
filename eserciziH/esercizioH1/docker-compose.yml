@@ -1,0 +1,14 @@
+version: '3.0'
+services:
+  rasa:
+    image: rasa/rasa:3.2.6-full
+    ports:
+      - 5005:5005
+    volumes:
+      - ./:/app
+    command:
+      - run
+  app:
+    image: adp2000/prova_rasa:esercizioH1
+    ports:
+      - 5055:5055

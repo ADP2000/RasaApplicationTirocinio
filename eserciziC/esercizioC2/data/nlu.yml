@@ -1,0 +1,114 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - ciao
+    - buongiorno
+    - buonasera
+    - salve
+    - ciao,sono [Antonio](name)
+    - salve, mi chiamo [Antonio](name)
+    - ciao sono [antonio](name)
+
+- intent: goodbye
+  examples: |
+    - arrivederci
+    - alla prossima volta
+    - ci vediamo presto
+    - addio
+    - grazie e arrivederci
+    - ciao ciao
+
+- intent: affirm
+  examples: |
+    - si
+    - s
+    - si mi va
+    - certo
+    - certamente
+    - corretto
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - mai
+    - no, grazie
+    - non mi piace giocare
+    - in realta' no
+    - in questo momento no
+    - adesso no
+
+- intent: mood_great
+  examples: |
+    - molto bene
+    - bene
+    - mi sento splenditamente bene
+    - tutto ok
+    - oggi sto molto bene
+    - mi sento in forma
+    - sono molto felice
+    - ottimamente
+    - bene grazie
+
+- intent: bot_challenge
+  examples: |
+    - sei un bot?
+    - sei un uomo?
+    - sto parlando con un bot?
+    - sto parlando con un uomo?
+    - con chi sto parlando?
+
+- intent: restart
+  examples: |
+    - restart
+    - restart la conversazione
+
+- intent: smetti_gioco
+  examples: |
+    - non voglio più giocare
+    - basta giocare
+    - non voglio piu rispondere 
+    - vado via
+    - grazie per avermi fatto giocare
+    - non voglio piu giocare
+
+- intent: voglio_continuare
+  examples: |
+    - voglio continuare a giocare
+    - continiuamo a giocare
+    - si continuiamo
+
+- intent: gioco
+  examples: |
+    - iniziamo
+    - sono pronto, iniziamo
+    - ok, iniziamo
+
+- intent: inform
+  examples: |
+    - [banane](frutta)
+    - [mele](frutta)
+    - [pere](frutta)
+    - [cocco](frutta)
+    - [mandarini](frutta)
+    - [kiwi](frutta)
+    - [arance](frutta)
+    - [carne](macelleria)
+    - [salsiccia](macelleria)
+    - [tagliata](macelleria)
+    - [pollo](macelleria)
+    - [hamburger](macelleria)
+    - [bistecca](macelleria)
+    - [salame](macelleria)
+    - [prosciutto](macelleria)
+    - [bresaola](macelleria)
+    - [shampoo](igiene_personale)
+    - [bagnoschiuma](igiene_personale)
+    - [sapone](igiene_personale)
+    - [balsamo](igiene_personale)
+    - [amuchina](igiene_personale)
+
+    
+    

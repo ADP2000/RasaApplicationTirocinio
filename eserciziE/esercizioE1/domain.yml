@@ -1,0 +1,128 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - gioco
+  - restart
+  - smetti_gioco
+  - inform
+  - voglio_continuare
+  - bot_challenge
+
+entities:
+- name
+- numero_agnello
+- numero_ma
+- numero_espressione
+
+slots:
+  name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: name
+  numero_agnello:
+    type: text
+    influence_conversation: true
+    mappings: 
+    - type: from_entity
+      entity: numero_agnello
+  numero_ma:
+    type: text
+    influence_conversation: true
+    mappings: 
+    - type: from_entity
+      entity: numero_ma
+  numero_espressione:
+    type: text
+    influence_conversation: true
+    mappings: 
+    - type: from_entity
+      entity: numero_espressione
+
+forms: 
+  play_form:
+    required_slots:
+    - numero_agnello
+    - numero_ma
+    - numero_espressione
+  
+
+responses:
+  
+  utter_greet:
+  - text: Hey ciao! Come stai?
+  - text: Ciao {name}, come stai?
+  - text: Ehilà, come va?
+
+  utter_vuoi_giocare:
+  - text: Vogliamo iniziare un nuovo gioco?
+    buttons:
+    - title: Si
+      payload: /affirm
+    - title: No
+      payload: /deny
+
+  utter_descrizione_gioco:
+  - text: |- 
+      OK! Ti presento allora il funzionamento di questo gioco. Dovrai leggere un racconto e, una volta 
+      letto, ti chiederò quante volte certe parole vengono ripetute nel testo.
+
+  utter_storia:
+  - text: |- 
+      “Un giorno un lupo vide un agnello che bevevo presso un torrente e gli venne voglia di mangiarselo, ma con quale scusa? 
+      Allora, standosene là a monte, cominciò ad accusarlo di sporcare l’acqua, così egli non poteva bere. 
+      L’agnello gli fece notare che, per bere, sfiorava appena l’acqua col muso e che, stando a valle, non gli era possibile sporcare l’acqua che scorreva sopra di lui. 
+      Ma a quel punto il lupo gli disse: “Non sei tu l’agnello che l’anno scorso ha insultato mio padre?”. 
+      Ma l’agnello gli fece notare che a quella data egli non era ancora nato. “Bene”! -Concluse allora il lupo - “Se tu, caro agnello, sei così bravo a trovar delle scuse, io non posso rinunciare a mangiarti!”. 
+      E se lo mangiò.” 
+      La favola mostra che ci si può difendere con l’intelligenza, ma se qualcuno ha deciso di farti un torto, non c’è giusta difesa che tenga. 
+      
+      ESOPO.
+
+  utter_ask_continue:
+  - text: Vuoi continuare a giocare?
+
+  utter_ask_continueplay:
+  - text: Sei sicuro di non voler piu giocare?
+
+  utter_happy:
+  - text: Sono felice :-)!
+
+  utter_conferma_gioco:
+  - text: |-
+      Ora se sei pronto per cominciare digita "iniziamo"
+
+  utter_goodbye:
+  - text: E' stato un piacere
+  - text: Alla prossima
+  - text: Arrivederci
+
+  utter_iamabot:
+  - text: In questo momento stai parlando con un  bot.
+
+  utter_gioco_finito:
+  - text: Il gioco è finito. Hai risposto a tutte le domande.
+
+  utter_restart:
+  - text: Se vuoi ricominciare il gioco digita 'restart'
+
+  utter_giochiamo_ancora:
+  - text: Digita di nuovo 'iniziamo' per giocare di nuovo
+
+
+actions:
+- action_restart
+- action_ask_numero_agnello
+- action_ask_numero_ma
+- action_ask_numero_espressione
+- validate_play_form
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

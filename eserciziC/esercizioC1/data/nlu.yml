@@ -1,0 +1,159 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - ciao
+    - buongiorno
+    - buonasera
+    - salve
+    - ciao,sono [Antonio](name)
+    - salve, mi chiamo [Antonio](name)
+    - ciao sono [antonio](name)
+
+- intent: goodbye
+  examples: |
+    - arrivederci
+    - alla prossima volta
+    - ci vediamo presto
+    - addio
+    - grazie e arrivederci
+    - ciao ciao
+
+- intent: affirm
+  examples: |
+    - si
+    - s
+    - si mi va
+    - certo
+    - certamente
+    - corretto
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - mai
+    - no, grazie
+    - non mi piace giocare
+    - in realta' no
+    - in questo momento no
+    - adesso no
+
+- intent: mood_great
+  examples: |
+    - molto bene
+    - bene
+    - mi sento splenditamente bene
+    - tutto ok
+    - oggi sto molto bene
+    - mi sento in forma
+    - sono molto felice
+    - ottimamente
+    - bene grazie
+
+- intent: bot_challenge
+  examples: |
+    - sei un bot?
+    - sei un uomo?
+    - sto parlando con un bot?
+    - sto parlando con un uomo?
+    - con chi sto parlando?
+
+- intent: restart
+  examples: |
+    - restart
+    - restart la conversazione
+
+- intent: smetti_gioco
+  examples: |
+    - non voglio più giocare
+    - basta giocare
+    - non voglio piu rispondere 
+    - vado via
+    - grazie per avermi fatto giocare
+    - non voglio piu giocare
+
+- intent: voglio_continuare
+  examples: |
+    - voglio continuare a giocare
+    - continiuamo a giocare
+    - si continuiamo
+
+- intent: gioco
+  examples: |
+    - iniziamo
+    - sono pronto, iniziamo
+    - ok, iniziamo
+
+- intent: inform
+  examples: |
+    - [banane](domanda1)
+    - [banana](domanda1)
+    - [mele](domanda1)
+    - [pere](domanda1)
+    - [cocco](domanda1)
+    - [mandarini](domanda1)
+    - [kiwi](domanda1)
+    - [insalata](domanda2)
+    - [insalate](domanda2)
+    - [cicoria](domanda2)
+    - [broccoli](domanda2)
+    - [zucchine](domanda2)
+    - [melanzane](domanda2)
+    - [peperoni](domanda2)
+    - [pasta](domanda3)
+    - [paste](domanda3)
+    - [spaghetti](domanda3)
+    - [rigatoni](domanda3)
+    - [puntine](domanda3)
+    - [maccheroni](domanda3)
+    - [orecchiette](domanda3)
+    - [gnocchi](domanda3)
+    - [maniche](domanda3)
+    - [salsiccie](domanda4)
+    - [salsiccia](domanda4)
+    - [carne](domanda4)
+    - [pollo](domanda4)
+    - [bistecca](domanda4)
+    - [tacchino](domanda4)
+    - [costata](domanda4)
+    - [pizza](domanda5)
+    - [pizze](domanda5)
+    - [pane](domanda5)
+    - [gamberi](domanda6)
+    - [gambero](domanda6)
+    - [spigola](domanda6)
+    - [orata](domanda6)
+    - [pesce](domanda6)
+    - [polipo](domanda6)
+    - [seppia](domanda6)
+    - [salmone](domanda6)
+    - [formaggio](domanda7)
+    - [formaggi](domanda7)
+    - [latte](domanda7)
+    - [mozzarella](domanda7)
+    - [provola](domanda7)
+    - [yogurt](domanda7)
+    - [philadelfia](domanda7)
+    - [stracchino](domanda7)
+    - [ricotta](domanda7)
+    - [prosciutto](domanda8)
+    - [prosciutti](domanda8)
+    - [salame](domanda8)
+    - [bresaola](domanda8)
+    - [mortadella](domanda8)
+    - [biscotti](domanda9)
+    - [biscotto](domanda9)
+    - [gelato](domanda9)
+    - [ciambellone](domanda9)
+    - [nutella](domanda9)
+    - [brioche](domanda9)
+    - [ammorbidente](domanda10)
+    - [ammorbidenti](domanda10)
+    - [detersivo](domanda10)
+    - [scopa](domanda10)
+    - [shampoo](domanda10)
+    - [bagnoschiuma](domanda10)
+
+    

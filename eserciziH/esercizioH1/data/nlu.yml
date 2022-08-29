@@ -1,0 +1,112 @@
+version: "3.1"
+
+nlu:
+
+- intent: greet
+  examples: |
+    - ciao
+    - buongiorno
+    - buonasera
+    - salve
+    - ciao,sono [Antonio](name)
+    - salve, mi chiamo [Antonio](name)
+    - ciao sono [antonio](name)
+
+- intent: goodbye
+  examples: |
+    - arrivederci
+    - alla prossima volta
+    - ci vediamo presto
+    - addio
+    - grazie e arrivederci
+    - ciao ciao
+
+- intent: affirm
+  examples: |
+    - si
+    - s
+    - si mi va
+    - certo
+    - certamente
+    - corretto
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - mai
+    - no, grazie
+    - non mi piace giocare
+    - in realta' no
+    - in questo momento no
+    - adesso no
+
+- intent: mood_great
+  examples: |
+    - molto bene
+    - bene
+    - mi sento splenditamente bene
+    - tutto ok
+    - oggi sto molto bene
+    - mi sento in forma
+    - sono molto felice
+    - ottimamente
+    - bene grazie
+
+- intent: bot_challenge
+  examples: |
+    - sei un bot?
+    - sei un uomo?
+    - sto parlando con un bot?
+    - sto parlando con un uomo?
+    - con chi sto parlando?
+
+- intent: restart
+  examples: |
+    - restart
+    - restart la conversazione
+
+- intent: smetti_gioco
+  examples: |
+    - non voglio più giocare
+    - basta giocare
+    - non voglio piu rispondere 
+    - vado via
+    - grazie per avermi fatto giocare
+    - non voglio piu giocare
+
+- intent: voglio_continuare
+  examples: |
+    - voglio continuare a giocare
+    - continiuamo a giocare
+    - si continuiamo
+
+- intent: gioco
+  examples: |
+    - iniziamo
+    - sono pronto, iniziamo
+    - ok, iniziamo
+
+- intent: inform
+  examples: |
+    - [Apro la macchinetta](domanda1)
+    - [Tolgo il filtro](domanda1)
+    - [Metto l'acqua](domanda1)
+    - [Rimetto il filtro](domanda1)
+    - [Metto caffè](domanda1)
+    - [Chiudo macchinetta](domanda1)
+    - [Metto sui fornelli](domanda1)
+    - [Accendo il fuoco](domanda1)
+    
+    
+    
+  # - [Prendo una pentola](domanda2)
+  # - [Metto l'acqua nella pentola](domanda2)
+  # - [Metto la pentola sul fuoco](domanda2)
+  # - [Aspetto che l'acqua arriva a bollore](domanda2)
+  # - [Butto la pasta](domanda2)
+  # - [Metto il sale](domanda2)
+  # - [Aspetto che la pasta cuocia](domanda2)
+  # - [Scolo la pasta](domanda2)
+  # - [Aggiungo la salsa di pomodoro](domanda2)
+

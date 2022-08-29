@@ -1,0 +1,152 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - smetti_gioco
+  - voglio_continuare
+  - mood_great
+  - bot_challenge
+  - gioco
+  - inform
+
+entities:
+- name
+- domanda1
+- domanda2
+- domanda3
+- domanda4
+- domanda5
+
+slots:
+  name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: name
+  domanda1:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda1
+  domanda2:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda2
+  domanda3:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda3
+  domanda4:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda4
+  domanda5:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: domanda5
+  numero_risposte_giuste:
+    type: float
+    influence_conversation: false
+    mappings:
+    - type: custom
+
+  
+forms: 
+  play_form:
+    required_slots:
+    - domanda1
+    - domanda2
+    - domanda3
+    - domanda4
+    - domanda5
+
+responses:
+  utter_greet:
+  - text: Hey ciao! Come stai?
+  - text: Ciao {name}, come stai?
+  - text: Ehilà, come va?
+
+  utter_vuoi_giocare:
+  - text: Vogliamo iniziare un nuovo gioco?
+    buttons:
+    - title: Si
+      payload: /affirm
+    - title: No
+      payload: /deny
+
+  utter_descrizione_gioco:
+  - text: |- 
+      OK! Ti presento allora il funzionamento di questo gioco. Dovrai leggere un racconto e, una volta 
+      letto, io ti farò delle domande specifiche sulla storia che hai letto.
+
+  utter_ask_continue:
+  - text: Vuoi continuare a giocare?
+
+  utter_ask_continueplay:
+  - text: Sei sicuro di non voler piu giocare?
+
+  utter_happy:
+  - text: Sono felice :-)!
+
+  utter_conferma_gioco:
+  - text: |-
+      Ora se sei pronto per cominciare digita "iniziamo"
+
+  utter_goodbye:
+  - text: E' stato un piacere
+  - text: Alla prossima
+  - text: Arrivederci
+
+  utter_iamabot:
+  - text: In questo momento stai parlando con un  bot.
+
+  utter_gioco_finito:
+  - text: Il gioco è finito. Hai risposto correttamente a {numero_risposte_giuste} domande.
+
+  utter_restart:
+  - text: Se vuoi ricominciare il gioco digita 'restart'
+
+  utter_giochiamo_ancora:
+  - text: Digita di nuovo 'iniziamo' per giocare di nuovo
+
+  utter_storia:
+  - text: |-
+      Eccolo lì, quel vecchio gattaccio randagio. Al mattino è già lì, ronfante, al confine del minuscolo paese, sul vecchio muro che separa le case dallo strapiombo che dà alle campagne. Chissà dove dorme. Chissà dove, e soprattutto quando, mangia. Se ne sta lì tutto il giorno, eppure è rotondo. Certo è soddisfatto, come solo un gatto libero di lungo corso sa essere.
+      Pare che passi il suo tempo a guardare il cielo. Non è così. Non è proprio così. Se stiamo più attenti, ci accorgiamo che osserva una piccola nuvola. A volte è un po’ più tonda e compatta, altre più lunga e stracciata, ma è proprio sempre la stessa nuvola, ogni giorno.
+      La nuvola, dal canto suo, sembra proprio lusingata da tutta quell’attenzione. Proprio lei, piccola e comune tra milioni di sorelle maestose, alte nel cielo, ha trovato un pubblico così attento. Ha trovato un amico.
+      Ci fosse Rodari, saprebbe ascoltarli, e riferirci le storie meravigliose che quei due si raccontano. Ma noi, piccoli osservatori curiosi, possiamo solo guardare e, forse, immaginare.
+      I giorni passano e passano e sembrano tutti uguali, nel sonnacchioso villaggio, mentre l’estate incurante completa il suo viaggio. Ogni giorno il gatto è lì, a guardare in alto. Anche la nuvola è lì, ogni giorno con qualcosa di nuovo per il suo amico affezionato. Una corsa su un vento fresco d’alta quota, una forma strana che forse il gatto indovinerà, un giocare a far piccolo il sole, coprendolo per un attimo. Arriva la sera e i due amici si salutano silenziosi e chissà dove vanno, a passare la notte.
+      L’estate ha finito la sua strada. Venti freddi e mandrie di sciocche nubi basse e grigie tengono lontana la nuvola dal suo amico. Quando finalmente torna, il muretto è vuoto, il gatto non c’è. E nemmeno il giorno dopo. E nemmeno quello dopo ancora. La nuvola, che durante la loro estate l’ha sempre trovato lì, si agita, prende forme strane e nervose, si mette a cercarlo per tutta la campagna. I vecchi del paesello, osservando quella nuvola che si muove infischiandosene dei venti, scuotono la testa e annunciano tempesta.
+      Cerca e cerca, alla fine trova il suo amico. E’ lì, nella campagna, chino tra i trifogli. Se n’è andato contento e soddisfatto, come ha sempre vissuto, l’ultimo topo degli infiniti che ha acchiappato a riempirgli la pancia. Non avrebbe desiderato nulla di meglio, ma la sua amica non lo sa, nuvole e gatti non si capiscono. E lei, la nostra nuvola d’estate bianca e soffice, soffre per aver perso il suo compagno di giochi. Si gonfia e si gonfia e diventa grigia e diventa nera.
+      L’aria si ferma, e lei si scioglie in pioggia. Piange e piange sul suo amico finché la terra si rivolta e copre entrambi, portando con sé una piccola ghianda matura.
+      Passa l’autunno e passa l’inverno. A primavera il paese è ancora lì e sembra sempre uguale a se stesso.
+      Se però guardiamo bene, affacciandoci da quel muro che separa il villaggio dalle campagne, vediamo una giovane quercia che cresce in fretta. Una quercia che è un po’ la nostra nuvola e un po’ il nostro libero gattone. Crescerà e crescerà e rimarrà lì per tanto tempo. Tanto tempo, come è dato solo ai frutti degli incontri più insoliti e più belli.
+
+utter_ask_continueplay:
+  - text: Sei sicuro di non voler piu giocare?
+
+actions:
+- action_restart
+- action_ask_domanda1
+- action_ask_domanda2
+- action_ask_domanda3
+- action_ask_domanda4
+- action_ask_domanda5
+- validate_play_form
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

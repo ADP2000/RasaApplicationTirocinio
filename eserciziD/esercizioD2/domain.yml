@@ -1,0 +1,101 @@
+version: '3.1'
+intents:
+- affirm
+- bot_challenge
+- deny
+- gioco_1
+- goodbye
+- greet
+- mood_great
+- numero_parole
+- restart
+- smetti_gioco
+- voglio_continuare
+entities:
+- numero
+- name
+
+slots:
+  name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: name
+  numero:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: numero
+  numero_errori:
+    type: float
+    influence_conversation: false
+    mappings:
+    - type: custom
+  
+forms:
+  play_form:
+    required_slots:
+    - numero
+
+responses:
+  utter_greet:
+  - text: Hey ciao! Come stai?
+  - text: Ciao {name}, come stai?
+  - text: Ehilà, come va?
+  utter_vuoi_giocare:
+  - text: Mi chiedevo se avessi voglia di fare un gioco con me?
+    buttons:
+    - title: Si
+      payload: /affirm
+    - title: No
+      payload: /deny
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_ask_continue:
+  - text: Vuoi continuare l'esercizio?
+
+  utter_ask_continueplay:
+  - text: Sei sicuro di non voler piu continuare?
+  utter_happy:
+  - text: Sono felice :-)!
+  utter_conferma_gioco:
+  - text: |-
+      L'esercizio funziona nel seguente modo: verranno elencate una serie di parole complesse e dovrai fare attenzione
+      ad una in particolare in cui ti si chiederà, alla fine, quante volte e' stata ripetuta.
+      Se vuoi iniziare a giocare allora dì 'giochiamo'!
+  
+  utter_goodbye:
+  - text: E' stato un piacere
+  - text: Alla prossima
+  - text: Arrivederci
+  utter_iamabot:
+  - text: In questo momento stai parlando con un  bot.
+  utter_gioco_finito:
+  - text: |- 
+      Il gioco è finito. Hai sbagliato la risposta {numero_errori} volte. 
+      Alla prossima.
+  utter_restart:
+  - text: Se vuoi ricominciare il gioco digita 'restart'
+  utter_giochiamo_ancora:
+  - text: Digita di nuovo 'giochiamo' per giocare di nuovo
+
+actions:
+- action_ask_numero
+- action_restart
+- utter_ask_continueplay
+- utter_conferma_gioco
+- utter_gioco_finito
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_vuoi_giocare
+- validate_play_form
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

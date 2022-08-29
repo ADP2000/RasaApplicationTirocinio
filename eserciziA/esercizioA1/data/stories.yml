@@ -1,0 +1,220 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - action: utter_vuoi_giocare
+  - intent: affirm
+  - action: utter_descrizione_gioco
+  - action: utter_conferma_gioco 
+
+- story: unhappy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - action: utter_vuoi_giocare
+  - intent: deny
+  - action: utter_goodbye
+
+- story: smetti di giocare definitivamente
+  steps: 
+  - intent: smetti_gioco
+  - action: utter_ask_continueplay
+  - intent: affirm
+  - action: utter_gioco_finito
+  - action: utter_goodbye
+
+- story: Ricomincia la conversazione ogni volta che l'utente digita restart
+  steps:
+  - action: utter_restart
+  - intent: restart
+  - action: action_restart
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+    entities:
+    - name: antonio
+  - slot_was_set:
+    - name: antonio
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - action: utter_vuoi_giocare
+  - intent: affirm
+  - action: utter_descrizione_gioco
+  - action: utter_conferma_gioco
+
+- story: interactive_story_2
+  steps: 
+  - intent: gioco
+  - action: utter_storia
+  - action: play_form
+  - active_loop: play_form
+  - slot_was_set:
+    - requested_slot: domanda1
+  - intent: smetti_gioco
+  - action: utter_ask_continueplay
+  - intent: affirm
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_gioco_finito
+  - action: utter_goodbye
+
+- story: interactive_story_3
+  steps: 
+  - intent: gioco
+  - action: utter_storia
+  - action: play_form
+  - active_loop: play_form
+  - slot_was_set:
+    - requested_slot: domanda1
+  - intent: smetti_gioco
+  - action: utter_ask_continueplay
+  - intent: deny
+  - action: play_form
+  - slot_was_set:
+    - requested_slot: domanda1
+
+- story: interactive_story_4
+  steps: 
+  - intent: gioco
+  - action: utter_storia
+  - action: play_form
+  - active_loop: play_form
+  - slot_was_set:
+    - requested_slot: domanda2
+  - intent: smetti_gioco
+  - action: utter_ask_continueplay
+  - intent: affirm
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_gioco_finito
+  - action: utter_goodbye
+
+- story: interactive_story_5
+  steps: 
+  - intent: gioco
+  - action: utter_storia
+  - action: play_form
+  - active_loop: play_form
+  - slot_was_set:
+    - requested_slot: domanda2
+  - intent: smetti_gioco
+  - action: utter_ask_continueplay
+  - intent: deny
+  - action: play_form
+  - slot_was_set:
+    - requested_slot: domanda2
+
+- story: interactive_story_6
+  steps: 
+  - intent: gioco
+  - action: utter_storia
+  - action: play_form
+  - active_loop: play_form
+  - slot_was_set:
+    - requested_slot: domanda3
+  - intent: smetti_gioco
+  - action: utter_ask_continueplay
+  - intent: affirm
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_gioco_finito
+  - action: utter_goodbye
+
+- story: interactive_story_7
+  steps: 
+  - intent: gioco
+  - action: utter_storia
+  - action: play_form
+  - active_loop: play_form
+  - slot_was_set:
+    - requested_slot: domanda3
+  - intent: smetti_gioco
+  - action: utter_ask_continueplay
+  - intent: deny
+  - action: play_form
+  - slot_was_set:
+    - requested_slot: domanda3
+
+- story: interactive_story_8
+  steps: 
+  - intent: gioco
+  - action: utter_storia
+  - action: play_form
+  - active_loop: play_form
+  - slot_was_set:
+    - requested_slot: domanda4
+  - intent: smetti_gioco
+  - action: utter_ask_continueplay
+  - intent: affirm
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_gioco_finito
+  - action: utter_goodbye
+
+- story: interactive_story_9
+  steps: 
+  - intent: gioco
+  - action: utter_storia
+  - action: play_form
+  - active_loop: play_form
+  - slot_was_set:
+    - requested_slot: domanda4
+  - intent: smetti_gioco
+  - action: utter_ask_continueplay
+  - intent: deny
+  - action: play_form
+  - slot_was_set:
+    - requested_slot: domanda4
+
+- story: interactive_story_10
+  steps: 
+  - intent: gioco
+  - action: utter_storia
+  - action: play_form
+  - active_loop: play_form
+  - slot_was_set:
+    - requested_slot: domanda5
+  - intent: smetti_gioco
+  - action: utter_ask_continueplay
+  - intent: affirm
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_gioco_finito
+  - action: utter_goodbye
+
+- story: interactive_story_11
+  steps: 
+  - intent: gioco
+  - action: utter_storia
+  - action: play_form
+  - active_loop: play_form
+  - slot_was_set:
+    - requested_slot: domanda5
+  - intent: smetti_gioco
+  - action: utter_ask_continueplay
+  - intent: deny
+  - action: play_form
+  - slot_was_set:
+    - requested_slot: domanda5
+
+
