@@ -35,19 +35,20 @@ n = input("Scegli il livello di difficota da 1 a 3:")
 numero = int(n)
 esercizioScelto = scegli_esercizio(numero)
 print(esercizioScelto.nome)
+
 f = open("cartellaEsercizio.txt", "w")
 f.write(esercizioScelto.cartella)
 f.close()
+
 f = open("nomeEsercizio.txt", "w")
 f.write(esercizioScelto.nome)
 f.close()
-# print(os.getcwd())   # restituisce la directory corrente
-# print(os.listdir())  # restituisce le cartelle e i file contenuti nella directory corrente   
-# os.chdir("C:/Users/Antonio/Tirocinio/RasaApplication/" + esercizioScelto.cartella) # cambia la directory corrente
-# print(os.getcwd())
-comando1 = "docker start {}_app_1"
-comando2 = "docker start {}_rasa_1"
-subprocess.run(comando1.format(esercizioScelto.nome.lower()), shell=True)  #esegue il comando dal terminale
-subprocess.run(comando2.format(esercizioScelto.nome.lower()), shell=True)  #esegue il comando dal terminale
+
+cartellaCorrente = os.getcwd()
+os.chdir(esercizioScelto.cartella)
+#print(os.getcwd())
+subprocess.run("docker-compose up -d", shell=True) # il comando docker-compose up esegue i container che si 
+                                                   # riferiscono ai server e il parametro -d li esegue in background 
+os.chdir(cartellaCorrente)
 subprocess.run("py rasaShell.py", shell=True)  #esegue il file rasaShell.py che permette di eseguire l'esercizio
                                                # e si occupa della sucessiva deattivazione dei server
