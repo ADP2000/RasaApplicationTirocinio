@@ -47,6 +47,9 @@ f.close()
 cartellaCorrente = os.getcwd()
 os.chdir(esercizioScelto.cartella)
 #print(os.getcwd())
+comando = "docker build . -t adp2000/prova_rasa:{}"
+subprocess.run(comando.format(esercizioScelto.nome), shell=True)  # permette di costruire l'immagine dell'
+                                                                  # esercizio scelto ed eseguire il comando successivo
 subprocess.run("docker-compose up -d", shell=True) # il comando docker-compose up esegue i container che si 
                                                    # riferiscono ai server e il parametro -d li esegue in background 
 os.chdir(cartellaCorrente)
