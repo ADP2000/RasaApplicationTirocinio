@@ -40,13 +40,12 @@ f = open("cartellaEsercizio.txt", "w")
 f.write(esercizioScelto.cartella)
 f.close()
 
-f = open("nomeEsercizio.txt", "w")
-f.write(esercizioScelto.nome)
-f.close()
+# f = open("nomeEsercizio.txt", "w")
+# f.write(esercizioScelto.nome)
+# f.close()
 
 cartellaCorrente = os.getcwd()
 os.chdir(esercizioScelto.cartella)
-#print(os.getcwd())
 comando = "docker build . -t adp2000/prova_rasa:{}"
 subprocess.run(comando.format(esercizioScelto.nome), shell=True)  # permette di costruire l'immagine dell'
                                                                   # esercizio scelto ed eseguire il comando successivo
