@@ -31,26 +31,29 @@ def scegli_esercizio(livello) -> Esercizio:
     i = randint(0,len(lista)-1)
     return lista[i]
 
-n = input("Scegli il livello di difficota da 1 a 3:")
+n = input("Scegli il livello di difficota da 1 a 3: ")
 numero = int(n)
-esercizioScelto = scegli_esercizio(numero)
-print(esercizioScelto.nome)
+if(numero > 3):
+    print("Hai sbagliato numero. Deve essere compreso tra 1 e 3!")
+else:
+    esercizioScelto = scegli_esercizio(numero)
+    print(esercizioScelto.nome)
 
-f = open("cartellaEsercizio.txt", "w")
-f.write(esercizioScelto.cartella)
-f.close()
+    f = open("cartellaEsercizio.txt", "w")
+    f.write(esercizioScelto.cartella)
+    f.close()
 
-# f = open("nomeEsercizio.txt", "w")
-# f.write(esercizioScelto.nome)
-# f.close()
+    # f = open("nomeEsercizio.txt", "w")
+    # f.write(esercizioScelto.nome)
+    # f.close()
 
-cartellaCorrente = os.getcwd()
-os.chdir(esercizioScelto.cartella)
-comando = "docker build . -t adp2000/prova_rasa:{}"
-subprocess.run(comando.format(esercizioScelto.nome), shell=True)  # permette di costruire l'immagine dell'
-                                                                  # esercizio scelto ed eseguire il comando successivo
-subprocess.run("docker-compose up -d", shell=True) # il comando docker-compose up esegue i container che si 
-                                                   # riferiscono ai server e il parametro -d li esegue in background 
-os.chdir(cartellaCorrente)
-subprocess.run("py rasaShell.py", shell=True)  #esegue il file rasaShell.py che permette di eseguire l'esercizio
-                                               # e si occupa della sucessiva deattivazione dei server
+    cartellaCorrente = os.getcwd()
+    os.chdir(esercizioScelto.cartella)
+    comando = "docker build . -t adp2000/prova_rasa:{}"
+    subprocess.run(comando.format(esercizioScelto.nome), shell=True)  # permette di costruire l'immagine dell'
+                                                                    # esercizio scelto ed eseguire il comando successivo
+    subprocess.run("docker-compose up -d", shell=True) # il comando docker-compose up esegue i container che si 
+                                                    # riferiscono ai server e il parametro -d li esegue in background 
+    os.chdir(cartellaCorrente)
+    subprocess.run("py rasaShell.py", shell=True)  #esegue il file rasaShell.py che permette di eseguire l'esercizio
+                                                # e si occupa della sucessiva deattivazione dei server
