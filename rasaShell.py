@@ -9,6 +9,6 @@ f.close()
 # f.close()
 
 os.chdir(cartella) # cambia la directory corrente
-print(os.getcwd())
+#print(os.getcwd())
 subprocess.run("rasa shell", shell=True)
 subprocess.run("docker-compose stop", shell=True)
