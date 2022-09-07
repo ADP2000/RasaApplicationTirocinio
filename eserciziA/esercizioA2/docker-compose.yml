@@ -8,6 +8,11 @@ services:
       - ./:/app
     command:
       - run
+      - -m
+      - models
+      - --enable-api
+      - --cors
+      - "*"
   app:
     image: adp2000/prova_rasa:esercizioA2
     ports:
