@@ -193,7 +193,7 @@ class ValidatePlayForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict ) -> Dict[Text,Any]: 
         
-        if slot_value.lower() == "salsiccie" or slot_value.lower() == "salsiccia":
+        if slot_value.lower() == "salsicce" or slot_value.lower() == "salsiccia":
             global risposte_giuste
             risposte_giuste += 1
             dispatcher.utter_message(
