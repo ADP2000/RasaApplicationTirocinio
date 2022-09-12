@@ -7,4 +7,4 @@ f.close()
 
 os.chdir(cartella) # cambia la directory corrente
 subprocess.run("python -m http.server", shell=True)
-subprocess.run("docker-compose stop", shell=True)
+#subprocess.run("docker-compose stop", shell=True)
