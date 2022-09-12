@@ -21,7 +21,7 @@ from rasa_sdk.types import DomainDict
 risposte = ["girgenti", "di piante selvatiche", "con un asino", "giugno", 
             "sono tristi ma il loro sorriso nasconde il sentimento"]
 
-risposte_giuste = 0.0
+risposte_errori = 0.0
 
 class ActionRestart(Action):
     def name(self) -> Text:
@@ -118,13 +118,13 @@ class ValidatePlayForm(FormValidationAction):
         domain: DomainDict ) -> Dict[Text,Any]: 
 
         if slot_value.lower() == self.rispose_esatte()[0]:
-            global risposte_giuste
-            risposte_giuste += 1
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{"domanda1": slot_value}
         else:
+            global risposte_errori
+            risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato. La risposta giusta era 'Girgenti'"
             )
@@ -138,13 +138,13 @@ class ValidatePlayForm(FormValidationAction):
         domain: DomainDict ) -> Dict[Text,Any]: 
         
         if slot_value.lower() == self.rispose_esatte()[1]:
-            global risposte_giuste
-            risposte_giuste += 1
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{"domanda2": slot_value}
         else:
+            global risposte_errori
+            risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato. La risposta giusta era 'Di piante selvatiche'"
             )
@@ -158,13 +158,13 @@ class ValidatePlayForm(FormValidationAction):
         domain: DomainDict ) -> Dict[Text,Any]: 
         
         if slot_value.lower() == self.rispose_esatte()[2]:
-            global risposte_giuste
-            risposte_giuste += 1
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{"domanda3": slot_value}
         else:
+            global risposte_errori
+            risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato. La risposta giusta era 'Con un asino'"
             )
@@ -178,13 +178,13 @@ class ValidatePlayForm(FormValidationAction):
         domain: DomainDict ) -> Dict[Text,Any]: 
         
         if slot_value.lower() == self.rispose_esatte()[3]:
-            global risposte_giuste
-            risposte_giuste += 1
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{"domanda4": slot_value}
         else:
+            global risposte_errori
+            risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato. La risposta giusta era 'Giugno'"
             )
@@ -197,24 +197,24 @@ class ValidatePlayForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict ) -> Dict[Text,Any]: 
         
-        global risposte_giuste
-        risposte = risposte_giuste
-        risposte_giuste = 0.0
+        global risposte_errori
+        risposte = risposte_errori
+        risposte_errori = 0.0
         if slot_value.lower() == self.rispose_esatte()[4]:
-            risposte += 1
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return {
                 "domanda5": slot_value,
-                "numero_risposte_giuste": risposte,
+                "numero_errori": risposte,
                 }
         else:
+            risposte += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato. La risposta giusta era 'Sono tristi ma il loro sorriso nasconde il sentimento'"
             )
             return {
                 "domanda5": slot_value,
-                "numero_risposte_giuste": risposte,
+                "numero_errori": risposte,
                 }
     
