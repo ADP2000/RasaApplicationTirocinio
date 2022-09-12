@@ -168,7 +168,7 @@ class ValidatePlayForm(FormValidationAction):
             global errori
             errori += 1
             dispatcher.utter_message(
-                text= "OPS! Purtoppo hai sbagliato.Dai risprova."
+                text= "OPS! Purtoppo hai sbagliato.Dai riprova."
             )
             return {"passo1": None}
 
@@ -188,7 +188,7 @@ class ValidatePlayForm(FormValidationAction):
             global errori
             errori += 1
             dispatcher.utter_message(
-                text= "OPS! Purtoppo hai sbagliato.Dai risprova."
+                text= "OPS! Purtoppo hai sbagliato.Dai riprova."
             )
             return {"passo2": None}
 
@@ -208,7 +208,7 @@ class ValidatePlayForm(FormValidationAction):
             global errori
             errori += 1
             dispatcher.utter_message(
-                text= "OPS! Purtoppo hai sbagliato.Dai risprova."
+                text= "OPS! Purtoppo hai sbagliato.Dai riprova."
             )
             return {"passo3": None}
 
@@ -228,7 +228,7 @@ class ValidatePlayForm(FormValidationAction):
             global errori
             errori += 1
             dispatcher.utter_message(
-                text= "OPS! Purtoppo hai sbagliato.Dai risprova."
+                text= "OPS! Purtoppo hai sbagliato.Dai riprova."
             )
             return {"passo4": None}
 
@@ -248,7 +248,7 @@ class ValidatePlayForm(FormValidationAction):
             global errori
             errori += 1
             dispatcher.utter_message(
-                text= "OPS! Purtoppo hai sbagliato.Dai risprova."
+                text= "OPS! Purtoppo hai sbagliato.Dai riprova."
             )
             return {"passo5": None}
 
@@ -268,7 +268,7 @@ class ValidatePlayForm(FormValidationAction):
             global errori
             errori += 1
             dispatcher.utter_message(
-                text= "OPS! Purtoppo hai sbagliato.Dai risprova."
+                text= "OPS! Purtoppo hai sbagliato.Dai riprova."
             )
             return {"passo6": None}
     
@@ -288,7 +288,7 @@ class ValidatePlayForm(FormValidationAction):
             global errori
             errori += 1
             dispatcher.utter_message(
-                text= "OPS! Purtoppo hai sbagliato.Dai risprova."
+                text= "OPS! Purtoppo hai sbagliato.Dai riprova."
             )
             return {"passo7": None}
 
@@ -301,15 +301,15 @@ class ValidatePlayForm(FormValidationAction):
 
         global errori
         errori_tot = errori
-        errori = 0.0
         if slot_value.lower() == "accendo il fuoco":
+            errori = 0.0
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{"passo7": slot_value, "numero_errori": errori_tot}
         else:
             dispatcher.utter_message(
-                text= "OPS! Purtoppo hai sbagliato.Dai risprova."
+                text= "OPS! Purtoppo hai sbagliato.Dai riprova."
             )
             return {"passo7": None}
 
