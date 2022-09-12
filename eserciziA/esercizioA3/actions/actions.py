@@ -19,7 +19,7 @@ from rasa_sdk.types import DomainDict
 
 
 
-risposte_giuste = 0.0
+risposte_errori = 0.0
 
 class ActionRestart(Action):
     def name(self) -> Text:
@@ -83,13 +83,13 @@ class ValidatePlayForm(FormValidationAction):
         domain: DomainDict ) -> Dict[Text,Any]: 
 
         if slot_value.lower() == "bosco":
-            global risposte_giuste
-            risposte_giuste += 1
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{"domanda1": slot_value}
         else:
+            global risposte_errori
+            risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato."
             )
@@ -103,13 +103,13 @@ class ValidatePlayForm(FormValidationAction):
         domain: DomainDict ) -> Dict[Text,Any]: 
         
         if slot_value.lower() == "vigna":
-            global risposte_giuste
-            risposte_giuste += 1
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{"domanda2": slot_value}
         else:
+            global risposte_errori
+            risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato."
             )
@@ -123,13 +123,13 @@ class ValidatePlayForm(FormValidationAction):
         domain: DomainDict ) -> Dict[Text,Any]: 
         
         if slot_value.lower() == "uva":
-            global risposte_giuste
-            risposte_giuste += 1
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{"domanda3": slot_value}
         else:
+            global risposte_errori
+            risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato."
             )
@@ -142,26 +142,26 @@ class ValidatePlayForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict ) -> Dict[Text,Any]: 
         
-        global risposte_giuste
-        risposte = risposte_giuste
-        risposte_giuste = 0.0
+        global risposte_errori
+        risposte = risposte_errori
+        risposte_errori = 0.0
         if slot_value.lower() == "acerba":
             
-            risposte += 1
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{
                 "domanda4": slot_value,
-                "numero_risposte_giuste": risposte
+                "numero_errori": risposte
             }
         else:
+            risposte += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato."
             )
             return {
                 "domanda4": slot_value,
-                "numero_risposte_giuste": risposte
+                "numero_errori": risposte
             }
 
     
