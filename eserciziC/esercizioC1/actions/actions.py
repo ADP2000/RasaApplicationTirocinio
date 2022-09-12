@@ -11,7 +11,7 @@ from rasa_sdk import Action, Tracker , FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 
-risposte_giuste = 0.0
+risposte_errori = 0.0
 
 class ActionRestart(Action):
     def name(self) -> Text:
@@ -134,13 +134,13 @@ class ValidatePlayForm(FormValidationAction):
         domain: DomainDict ) -> Dict[Text,Any]: 
 
         if slot_value.lower() == "banane" or slot_value.lower() == "banana":
-            global risposte_giuste
-            risposte_giuste += 1
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{"domanda1": slot_value}
         else:
+            global risposte_errori
+            risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato."
             )
@@ -154,13 +154,13 @@ class ValidatePlayForm(FormValidationAction):
         domain: DomainDict ) -> Dict[Text,Any]: 
         
         if slot_value.lower() == "insalata":
-            global risposte_giuste
-            risposte_giuste += 1
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{"domanda2": slot_value}
         else:
+            global risposte_errori
+            risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato."
             )
@@ -174,13 +174,13 @@ class ValidatePlayForm(FormValidationAction):
         domain: DomainDict ) -> Dict[Text,Any]: 
         
         if slot_value.lower() == "pasta":
-            global risposte_giuste
-            risposte_giuste += 1
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{"domanda3": slot_value}
         else:
+            global risposte_errori
+            risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato."
             )
@@ -194,13 +194,13 @@ class ValidatePlayForm(FormValidationAction):
         domain: DomainDict ) -> Dict[Text,Any]: 
         
         if slot_value.lower() == "salsicce" or slot_value.lower() == "salsiccia":
-            global risposte_giuste
-            risposte_giuste += 1
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{"domanda4": slot_value}
         else:
+            global risposte_errori
+            risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato."
             )
@@ -213,9 +213,7 @@ class ValidatePlayForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict ) -> Dict[Text,Any]: 
         
-        global risposte_giuste
         if slot_value.lower() == "pizza":
-            risposte_giuste += 1
             dispatcher.utter_message(
                 text= "Corretto"
             )
@@ -223,6 +221,8 @@ class ValidatePlayForm(FormValidationAction):
                 "domanda5": slot_value,
                 }
         else:
+            global risposte_errori
+            risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato."
             )
@@ -238,13 +238,13 @@ class ValidatePlayForm(FormValidationAction):
         domain: DomainDict ) -> Dict[Text,Any]: 
         
         if slot_value.lower() == "gamberi":
-            global risposte_giuste
-            risposte_giuste += 1
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{"domanda6": slot_value}
         else:
+            global risposte_errori
+            risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato."
             )
@@ -258,13 +258,13 @@ class ValidatePlayForm(FormValidationAction):
         domain: DomainDict ) -> Dict[Text,Any]: 
         
         if slot_value.lower() == "formaggio" or slot_value.lower() == "formaggi":
-            global risposte_giuste
-            risposte_giuste += 1
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{"domanda7": slot_value}
         else:
+            global risposte_errori
+            risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato."
             )
@@ -278,13 +278,13 @@ class ValidatePlayForm(FormValidationAction):
         domain: DomainDict ) -> Dict[Text,Any]: 
         
         if slot_value.lower() == "prosciutto":
-            global risposte_giuste
-            risposte_giuste += 1
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{"domanda8": slot_value}
         else:
+            global risposte_errori
+            risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato."
             )
@@ -298,13 +298,13 @@ class ValidatePlayForm(FormValidationAction):
         domain: DomainDict ) -> Dict[Text,Any]: 
         
         if slot_value.lower() == "biscotti":
-            global risposte_giuste
-            risposte_giuste += 1
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{"domanda9": slot_value}
         else:
+            global risposte_errori
+            risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato."
             )
@@ -317,25 +317,25 @@ class ValidatePlayForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict ) -> Dict[Text,Any]: 
         
-        global risposte_giuste
-        risposte = risposte_giuste
-        risposte_giuste= 0.0
+        global risposte_errori
+        risposte = risposte_errori
+        risposte_errori= 0.0
         if slot_value.lower() == "ammorbidente":
-            risposte +=1
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{
                 "domanda10": slot_value,
-                "numero_risposte_giuste": risposte
+                "numero_errori": risposte
             }
         else:
+            risposte += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato."
             )
             return{
                 "domanda10": slot_value,
-                "numero_risposte_giuste": risposte
+                "numero_errori": risposte
             }
 
         
