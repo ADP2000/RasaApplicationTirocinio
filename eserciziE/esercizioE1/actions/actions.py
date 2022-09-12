@@ -12,6 +12,7 @@ from rasa_sdk import Action, Tracker , FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 
+risposte_errori = 0.0
 
 class ActionRestart(Action):
     def name(self) -> Text:
@@ -71,6 +72,8 @@ class ValidatePlayForm(FormValidationAction):
             )
             return {"numero_agnello": slot_value}
         else:
+            global risposte_errori
+            risposte_errori += 1
             dispatcher.utter_message(
                 text = "OPS! Hai sbagliato. Dai riprova"
             )
@@ -89,6 +92,8 @@ class ValidatePlayForm(FormValidationAction):
             )
             return {"numero_ma": slot_value}
         else:
+            global risposte_errori
+            risposte_errori += 1
             dispatcher.utter_message(
                 text = "OPS! Hai sbagliato. Dai riprova"
             )
@@ -101,12 +106,18 @@ class ValidatePlayForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict ) -> Dict[Text,Any]: 
 
+        global risposte_errori
+        risposte = risposte_errori
         if slot_value.lower() == "2 espressioni":
+            risposte_errori = 0.0
             dispatcher.utter_message(
                 text= "Corretto, la risposta è giusta"
             )
-            return {"numero_espressione": slot_value}
+            return {"numero_espressione": slot_value,
+                    "numero_errori": risposte,
+            }
         else:
+            risposte +=1
             dispatcher.utter_message(
                 text = "OPS! Hai sbagliato. Dai riprova"
             )

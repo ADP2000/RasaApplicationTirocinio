@@ -44,6 +44,11 @@ slots:
     mappings: 
     - type: from_entity
       entity: numero_espressione
+  numero_errori:
+    type: float
+    influence_conversation: false
+    mappings:
+    - type: custom
 
 forms: 
   play_form:
@@ -107,7 +112,7 @@ responses:
   - text: In questo momento stai parlando con un  bot.
 
   utter_gioco_finito:
-  - text: Il gioco è finito. Hai risposto a tutte le domande.
+  - text: Il gioco è finito. Hai risposto in maniera errata a {numero_errori} domande.
 
   utter_restart:
   - text: Se vuoi ricominciare il gioco digita 'restart'
