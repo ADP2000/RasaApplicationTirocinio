@@ -114,7 +114,7 @@ responses:
   - text: In questo momento stai parlando con un  bot.
 
   utter_gioco_finito:
-  - text: Il gioco è finito. Hai risposto correttamente a {numero_errori} domande.
+  - text: Il gioco è finito. Hai risposto in maniera errata a {numero_errori} domande.
 
   utter_restart:
   - text: Se vuoi ricominciare il gioco digita 'restart'
