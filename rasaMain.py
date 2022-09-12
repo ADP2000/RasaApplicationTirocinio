@@ -55,6 +55,6 @@ else:
     subprocess.run("docker-compose up -d", shell=True) # il comando docker-compose up esegue i container che si 
                                                     # riferiscono ai server e il parametro -d li esegue in background 
     os.chdir(cartellaCorrente)
-    #subprocess.run("py rasaShell.py", shell=True)  # esegue il file rasaShell.py che permette di eseguire l'esercizio
+    subprocess.run("py rasaShell.py", shell=True)  # esegue il file rasaShell.py che permette di eseguire l'esercizio
                                                     # e si occupa della sucessiva deattivazione dei server
     #subprocess.run("py rasaHTTP.py", shell=True)    # esegue il file rasaHTTP.py
