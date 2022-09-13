@@ -20,7 +20,7 @@ from rasa_sdk.types import DomainDict
 
 risposte = ["muro", "estate", "chino tra i trifogli", "bianca e soffice", "dalle campagne"]
 
-risposte_errori = 0.0
+risposte_errori = -1
 
 class ActionRestart(Action):
     def name(self) -> Text:
@@ -115,18 +115,20 @@ class ValidatePlayForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict ) -> Dict[Text,Any]: 
 
+        global risposte_errori
+        risposte_errori = 0
         if slot_value.lower() == self.rispose_esatte()[0]:
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{"domanda1": slot_value}
         else:
-            global risposte_errori
             risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato."
             )
             return {"domanda1": slot_value}
+            
         
     def validate_domanda2(
         self,
@@ -198,6 +200,7 @@ class ValidatePlayForm(FormValidationAction):
         global risposte_errori
         risposte = risposte_errori
         risposte_errori = 0.0
+        
         if slot_value.lower() == self.rispose_esatte()[4]:
             dispatcher.utter_message(
                 text= "Corretto"
