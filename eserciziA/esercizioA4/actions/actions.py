@@ -21,7 +21,7 @@ from rasa_sdk.types import DomainDict
 risposte = ["sale", "in un fiume", "delle spugne", "si gonfiano", 
             "viene trascinato via dalla corrente"]
 
-risposte_errori = 0.0
+risposte_errori = -1
 
 class ActionRestart(Action):
     def name(self) -> Text:
@@ -102,6 +102,20 @@ class ActionDomanda5ASk(Action):
         )
         return []
 
+class ActionFine(Action):
+    def name(self) -> Text:
+        return "action_fine"
+
+    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
+        f = open("errori.txt","w")
+        f.write(str(risposte_errori))
+        f.close()
+        dispatcher.utter_message(
+            text = "Alla prossima volta",
+        )
+        return []
+
+
 class ValidatePlayForm(FormValidationAction):
 
     def name(self) -> Text:
@@ -117,13 +131,14 @@ class ValidatePlayForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict ) -> Dict[Text,Any]: 
 
+        global risposte_errori
+        risposte_errori = 0
         if slot_value.lower() == self.rispose_esatte()[0]:
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{"domanda1": slot_value}
         else:
-            global risposte_errori
             risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato. La risposta giusta era 'Sale'"
@@ -199,7 +214,6 @@ class ValidatePlayForm(FormValidationAction):
         
         global risposte_errori
         risposte = risposte_errori
-        risposte_errori = 0.0
         if slot_value.lower() == self.rispose_esatte()[4]:
             dispatcher.utter_message(
                 text= "Corretto"
@@ -209,12 +223,12 @@ class ValidatePlayForm(FormValidationAction):
                 "numero_errori": risposte,
                 }
         else:
-            risposte += 1
+            risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato. La risposta giusta era 'Viene trascinato via dalla corrente'"
             )
             return {
                 "domanda5": slot_value,
-                "numero_errori": risposte,
+                "numero_errori": risposte_errori,
                 }
     
