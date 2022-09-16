@@ -229,6 +229,6 @@ class ValidatePlayForm(FormValidationAction):
             )
             return {
                 "domanda5": slot_value,
-                "numero_errori": risposte,
+                "numero_errori": risposte_errori,
                 }
     
