@@ -100,6 +100,19 @@ class ActionDomanda5ASk(Action):
         )
         return []
 
+class ActionFine(Action):
+    def name(self) -> Text:
+        return "action_fine"
+
+    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
+        f = open("errori.txt","w")
+        f.write(str(risposte_errori))
+        f.close()
+        dispatcher.utter_message(
+            text = "Alla prossima volta",
+        )
+        return []
+
 class ValidatePlayForm(FormValidationAction):
 
     def name(self) -> Text:
@@ -199,7 +212,6 @@ class ValidatePlayForm(FormValidationAction):
         
         global risposte_errori
         risposte = risposte_errori
-        risposte_errori = 0.0
         
         if slot_value.lower() == self.rispose_esatte()[4]:
             dispatcher.utter_message(
@@ -210,12 +222,12 @@ class ValidatePlayForm(FormValidationAction):
                 "numero_errori": risposte,
                 }
         else:
-            risposte += 1
+            risposte_errori += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato."
             )
             return {
                 "domanda5": slot_value,
-                "numero_errori": risposte,
+                "numero_errori": risposte_errori,
                 }
     
