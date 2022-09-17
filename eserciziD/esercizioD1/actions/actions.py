@@ -18,7 +18,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 
 numeri = ["1","2","3","4","5","6"]
-errori = 0.0
+errori = -1
 
 class AskForNumeroPallaAction(Action):
 
@@ -47,6 +47,19 @@ class AskForNumeroPalla2Action(Action):
         + "\nRispondi con un numero: 1 palla,2 palle,3 palle...")                
         return []
 
+class ActionFine(Action):
+    def name(self) -> Text:
+        return "action_fine"
+
+    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
+        f = open("errori.txt","w")
+        f.write(str(errori))
+        f.close()
+        dispatcher.utter_message(
+            text = "Alla prossima volta",
+        )
+        return []
+
 class ValidatePlayForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_play_form"
@@ -65,9 +78,10 @@ class ValidatePlayForm(FormValidationAction):
         domain: DomainDict ) -> Dict[Text,Any]: 
  
         global errori
+        errori = 0
         if slot_value.lower() not in self.db_numeri() or slot_value.lower() != "4":
             errori += 1
-            dispatcher.utter_message(text = "Purtroppo hai sbagliato :-( \nDai riprova")
+            dispatcher.utter_message(text = "Purtroppo hai sbagliato.\nDai riprova")
             return {"numero_palla": None}
          
         dispatcher.utter_message(
@@ -85,11 +99,10 @@ class ValidatePlayForm(FormValidationAction):
         global errori
         if slot_value.lower() not in self.db_numeri2() or slot_value.lower() != "3 palle":
             errori += 1
-            dispatcher.utter_message(text = "Purtroppo hai sbagliato :-( \nDai riprova")
+            dispatcher.utter_message(text = "Purtroppo hai sbagliato\nDai riprova")
             return {"numero_palla2": None}
          
         erroriTot = errori
-        errori = 0.0
         dispatcher.utter_message(
             text = "Corretto, il numero è giusto!"
         )   

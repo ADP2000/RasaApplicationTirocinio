@@ -87,7 +87,6 @@ responses:
   utter_gioco_finito:
   - text: |- 
       Il gioco è finito. Hai sbagliato la risposta {numero_errori} volte. 
-      Alla prossima.
   utter_restart:
   - text: Se vuoi ricominciare il gioco digita 'restart'
   utter_giochiamo_ancora:
@@ -97,6 +96,7 @@ actions:
 - action_ask_numero_palla
 - action_ask_numero_palla2
 - action_restart
+- action_fine
 - utter_ask_continueplay
 - utter_conferma_gioco
 - utter_gioco_finito
