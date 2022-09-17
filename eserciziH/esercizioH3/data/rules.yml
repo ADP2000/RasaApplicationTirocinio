@@ -5,7 +5,7 @@ rules:
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
-  - action: utter_goodbye
+  - action: action_fine
 
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
@@ -27,5 +27,5 @@ rules:
     - slot_was_set:
       - requested_slot: null
     - action: utter_gioco_finito
-    - action: utter_goodbye
+    - action: action_fine
 

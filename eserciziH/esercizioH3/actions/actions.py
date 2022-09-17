@@ -17,7 +17,7 @@ from rasa_sdk import Action, Tracker , FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 
-errori = 0.0
+errori = -1
 
 class ActionRestart(Action):
     def name(self) -> Text:
@@ -155,7 +155,18 @@ class ActionPasso8ASk(Action):
         )
         return []
 
+class ActionFine(Action):
+    def name(self) -> Text:
+        return "action_fine"
 
+    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
+        f = open("errori.txt","w")
+        f.write(str(errori))
+        f.close()
+        dispatcher.utter_message(
+            text = "Alla prossima volta",
+        )
+        return []
 
 class ValidatePlayForm(FormValidationAction):
 
@@ -169,18 +180,22 @@ class ValidatePlayForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict ) -> Dict[Text,Any]: 
 
+        global errori
         if slot_value.lower() == "mi levo i vestiti":
             dispatcher.utter_message(
                 text= "Corretto"
             )
             return{"passo1": slot_value}
         else:
-            global errori
-            errori += 1
-            dispatcher.utter_message(
-                text= "OPS! Purtoppo hai sbagliato.Dai riprova."
-            )
-            return {"passo1": None}
+            if errori == -1:
+                errori = 1
+                dispatcher.utter_message(text = "Purtroppo hai sbagliato.\nDai riprova")
+                return {"passo1": None}
+            else:
+                errori += 1
+                dispatcher.utter_message(text = "Purtroppo hai sbagliato.\nDai riprova")
+                return {"passo1": None}
+
 
     def validate_passo2(
         self,
@@ -312,7 +327,6 @@ class ValidatePlayForm(FormValidationAction):
         global errori
         if slot_value.lower() == "mi metto a letto":
             erroriTot = errori
-            errori = 0.0
             dispatcher.utter_message(
                 text= "Corretto"
             )
