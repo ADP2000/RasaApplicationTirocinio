@@ -78,11 +78,16 @@ class ValidatePlayForm(FormValidationAction):
         domain: DomainDict ) -> Dict[Text,Any]: 
  
         global errori
-        errori = 0
         if slot_value.lower() not in self.db_numeri() or slot_value.lower() != "4":
-            errori += 1
-            dispatcher.utter_message(text = "Purtroppo hai sbagliato.\nDai riprova")
-            return {"numero_palla": None}
+            if errori == -1:
+                errori = 1
+                dispatcher.utter_message(text = "Purtroppo hai sbagliato.\nDai riprova")
+                return {"numero_palla": None}
+            else:
+                errori += 1
+                dispatcher.utter_message(text = "Purtroppo hai sbagliato.\nDai riprova")
+                return {"numero_palla": None}
+
          
         dispatcher.utter_message(
             text = "Corretto, il numero è giusto!"

@@ -151,7 +151,6 @@ class ValidatePlayForm(FormValidationAction):
         domain: DomainDict ) -> Dict[Text,Any]: 
 
         global risposte_errate
-        risposte_errate = 0
         if slot_value.lower() in self.lista_frutta():
             self.lista_frutta().remove(slot_value.lower())
             dispatcher.utter_message(
@@ -159,11 +158,18 @@ class ValidatePlayForm(FormValidationAction):
             )
             return{"domanda1": slot_value}
         else:
-            risposte_errate += 1
-            dispatcher.utter_message(
-                text= "OPS! Purtoppo hai sbagliato. Dai riprova."
-            )
-            return {"domanda1": None}
+            if risposte_errate == -1:
+                risposte_errate = 1
+                dispatcher.utter_message(
+                    text= "OPS! Purtoppo hai sbagliato. Dai riprova."
+                )
+                return {"domanda1": None}
+            else:
+                risposte_errate += 1
+                dispatcher.utter_message(
+                    text= "OPS! Purtoppo hai sbagliato. Dai riprova."
+                )
+                return {"domanda1": None}
         
     def validate_domanda2(
         self,
