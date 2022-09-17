@@ -69,11 +69,11 @@ class ValidatePlayForm(FormValidationAction):
             if errori == -1:
                 errori = 1
                 dispatcher.utter_message(text = "Purtroppo hai sbagliato.\nDai riprova")
-                return {"numero_palla": None}
+                return {"numero": None}
             else:
                 errori += 1
                 dispatcher.utter_message(text = "Purtroppo hai sbagliato.\nDai riprova")
-                return {"numero_palla": None}
+                return {"numero": None}
 
          
         erroriTot = errori

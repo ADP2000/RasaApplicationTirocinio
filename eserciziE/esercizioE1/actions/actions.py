@@ -91,13 +91,13 @@ class ValidatePlayForm(FormValidationAction):
                 dispatcher.utter_message(
                     text= "OPS! Purtoppo hai sbagliato. Dai riprova."
                 )
-                return {"domanda1": None}
+                return {"numero_agnello": None}
             else:
                 risposte_errori += 1
                 dispatcher.utter_message(
                     text= "OPS! Purtoppo hai sbagliato. Dai riprova."
                 )
-                return {"domanda1": None}
+                return {"numero_agnello": None}
 
     def validate_numero_ma(
         self,

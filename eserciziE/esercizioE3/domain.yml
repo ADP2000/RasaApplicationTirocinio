@@ -130,6 +130,7 @@ actions:
 - action_ask_numero_cavallo
 - action_ask_numero_groppa
 - action_ask_numero_espressione
+- action_fine
 - validate_play_form
 
 session_config:
