@@ -12,7 +12,7 @@ from rasa_sdk import Action, Tracker , FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 
-risposte_errate = 0.0
+risposte_errate = -1
 fruit_list = ["banane", "mele"]
 ham_list = ["salsiccia", "bistecca"]
 hygiene_list = ["sapone", "bagnoschiuma"]
@@ -85,7 +85,18 @@ class ActionDomanda6ASk(Action):
         )
         return []
 
+class ActionFine(Action):
+    def name(self) -> Text:
+        return "action_fine"
 
+    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
+        f = open("errori.txt","w")
+        f.write(str(risposte_errate))
+        f.close()
+        dispatcher.utter_message(
+            text = "Alla prossima volta",
+        )
+        return []
 
 class ValidatePlayForm(FormValidationAction):
 
@@ -108,6 +119,8 @@ class ValidatePlayForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict ) -> Dict[Text,Any]: 
 
+        global risposte_errate
+        risposte_errate = 0
         if slot_value.lower() in self.lista_frutta():
             self.lista_frutta().remove(slot_value.lower())
             dispatcher.utter_message(
@@ -115,7 +128,6 @@ class ValidatePlayForm(FormValidationAction):
             )
             return{"domanda1": slot_value}
         else:
-            global risposte_errate
             risposte_errate += 1
             dispatcher.utter_message(
                 text= "OPS! Purtoppo hai sbagliato. Dai riprova."
@@ -220,7 +232,6 @@ class ValidatePlayForm(FormValidationAction):
         global risposte_errate
         if slot_value.lower() in self.lista_igiene():
             errate = risposte_errate
-            risposte_errate = 0.0
             self.lista_igiene().remove(slot_value.lower())
             dispatcher.utter_message(
                 text= "Corretto"
