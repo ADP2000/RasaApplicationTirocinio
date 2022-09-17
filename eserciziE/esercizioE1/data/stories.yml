@@ -21,7 +21,7 @@ stories:
   - action: utter_happy
   - action: utter_vuoi_giocare
   - intent: deny
-  - action: utter_goodbye
+  - action: action_fine
 
 - story: smetti di giocare definitivamente
   steps: 
@@ -29,7 +29,7 @@ stories:
   - action: utter_ask_continueplay
   - intent: affirm
   - action: utter_gioco_finito
-  - action: utter_goodbye
+  - action: action_fine
 
 - story: Ricomincia la conversazione ogni volta che l'utente digita restart
   steps:
@@ -67,7 +67,7 @@ stories:
   - slot_was_set:
     - requested_slot: null
   - action: utter_gioco_finito
-  - action: utter_goodbye
+  - action: action_fine
 
 - story: interactive_story_3
   steps: 
