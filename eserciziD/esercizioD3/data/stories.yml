@@ -20,7 +20,7 @@ stories:
   - action: utter_happy
   - action: utter_vuoi_giocare
   - intent: deny
-  - action: utter_goodbye
+  - action: action_fine
 
 - story: smetti di giocare definitivamente
   steps: 
@@ -28,7 +28,7 @@ stories:
   - action: utter_ask_continueplay
   - intent: affirm
   - action: utter_gioco_finito
-  - action: utter_goodbye
+  - action: action_fine
 
 - story: giochiamo storia 1
   steps:
@@ -52,7 +52,7 @@ stories:
   - slot_was_set:
     - requested_slot: null
   - action: utter_gioco_finito
-  - action: utter_goodbye
+  - action: action_fine
 
 - story: giochiamo storia 2
   steps:
@@ -79,7 +79,7 @@ stories:
   steps:
   - action: utter_ask_continue
   - intent: deny
-  - action: utter_goodbye
+  - action: action_fine
 
 
 
