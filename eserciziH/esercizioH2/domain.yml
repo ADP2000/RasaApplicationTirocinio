@@ -170,6 +170,7 @@ actions:
 - action_ask_passo8
 - action_ask_passo9
 - action_ask_passo10
+- action_fine
 - validate_play_form
 
 session_config:
