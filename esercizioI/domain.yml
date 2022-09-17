@@ -100,6 +100,7 @@ utter_ask_continueplay:
 actions:
 - action_restart
 - action_ask_alfabeto
+- action_fine
 - validate_play_form
 
 session_config:

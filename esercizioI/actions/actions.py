@@ -11,6 +11,7 @@ from rasa_sdk import Action, Tracker , FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 
+errori = -1
 
 class ActionRestart(Action):
     def name(self) -> Text:
@@ -34,6 +35,19 @@ class ActionAlfabetoASk(Action):
         )
         return []
 
+class ActionFine(Action):
+    def name(self) -> Text:
+        return "action_fine"
+
+    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
+        f = open("errori.txt","w")
+        f.write(str(errori))
+        f.close()
+        dispatcher.utter_message(
+            text = "Alla prossima volta",
+        )
+        return []
+
 class ValidatePlayForm(FormValidationAction):
 
     def name(self) -> Text:
@@ -49,7 +63,8 @@ class ValidatePlayForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict ) -> Dict[Text,Any]: 
 
-        errori = 0.0
+        global errori
+        errori = 0
         i = 0
         stringa = self.risposte().lower()
         for c in slot_value.lower():
