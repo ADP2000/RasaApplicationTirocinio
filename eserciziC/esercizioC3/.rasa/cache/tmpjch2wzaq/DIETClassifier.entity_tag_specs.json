@@ -1,0 +1,44 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-frutta",
+      "2": "I-frutta",
+      "3": "L-frutta",
+      "4": "U-frutta",
+      "5": "B-materiale_scolastico",
+      "6": "I-materiale_scolastico",
+      "7": "L-materiale_scolastico",
+      "8": "U-materiale_scolastico",
+      "9": "B-name",
+      "10": "I-name",
+      "11": "L-name",
+      "12": "U-name",
+      "13": "B-prodotti",
+      "14": "I-prodotti",
+      "15": "L-prodotti",
+      "16": "U-prodotti",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-frutta": 1,
+      "I-frutta": 2,
+      "L-frutta": 3,
+      "U-frutta": 4,
+      "B-materiale_scolastico": 5,
+      "I-materiale_scolastico": 6,
+      "L-materiale_scolastico": 7,
+      "U-materiale_scolastico": 8,
+      "B-name": 9,
+      "I-name": 10,
+      "L-name": 11,
+      "U-name": 12,
+      "B-prodotti": 13,
+      "I-prodotti": 14,
+      "L-prodotti": 15,
+      "U-prodotti": 16,
+      "O": 0
+    },
+    "num_tags": 17
+  }
+]
