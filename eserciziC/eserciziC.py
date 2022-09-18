@@ -7,9 +7,9 @@ class Esercizio:
         self.cartella = cartella
 
 
-esercizioC1 = Esercizio("EsercizioC1",1, "eserciziC/esercizioC1")
-esercizioC2 = Esercizio("EsercizioC2",2, "eserciziC/esercizioC2")
-esercizioC3 = Esercizio("EsercizioC3",3, "eserciziC/esercizioC3")
+esercizioC1 = Esercizio("esercizioC1",1, "eserciziC/esercizioC1")
+esercizioC2 = Esercizio("esercizioC2",2, "eserciziC/esercizioC2")
+esercizioC3 = Esercizio("esercizioC3",3, "eserciziC/esercizioC3")
 
 lista_eserciziC = [esercizioC1,esercizioC2,esercizioC3,]
 

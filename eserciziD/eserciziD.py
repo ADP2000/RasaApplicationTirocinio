@@ -8,9 +8,9 @@ class Esercizio:
         self.cartella = cartella
 
 
-esercizioD1 = Esercizio("EsercizioD1",1, "eserciziD/esercizioD1")
-esercizioD2 = Esercizio("EsercizioD2",2, "eserciziD/esercizioD2")
-esercizioD3 = Esercizio("EsercizioD3",3, "eserciziD/esercizioD3")
+esercizioD1 = Esercizio("esercizioD1",1, "eserciziD/esercizioD1")
+esercizioD2 = Esercizio("esercizioD2",2, "eserciziD/esercizioD2")
+esercizioD3 = Esercizio("esercizioD3",3, "eserciziD/esercizioD3")
 
 lista_eserciziD = [esercizioD1,esercizioD2,esercizioD3,]
 

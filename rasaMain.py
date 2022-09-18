@@ -16,7 +16,7 @@ class Esercizio:
         self.livello = livello
         self.cartella = cartella
 
-esercizioI = Esercizio("EsercizioI", 1, "esercizioI")
+esercizioI = Esercizio("esercizioI", 1, "esercizioI")
 lista_esercizi = lista_eserciziA + lista_eserciziC + lista_eserciziD + lista_eserciziE + lista_eserciziH
 lista_esercizi.append(esercizioI)
 
