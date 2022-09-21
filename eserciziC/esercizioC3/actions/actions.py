@@ -5,7 +5,6 @@
 # https://rasa.com/docs/rasa/custom-actions
 
 
-from tkinter.messagebox import NO
 from typing import Any, Text, Dict, List
 from rasa_sdk.events import EventType, Restarted 
 from rasa_sdk import Action, Tracker , FormValidationAction
