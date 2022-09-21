@@ -75,12 +75,20 @@ class ValidatePlayForm(FormValidationAction):
                 dispatcher.utter_message(text = "Purtroppo hai sbagliato.\nDai riprova")
                 return {"numero": None}
 
-         
-        erroriTot = errori
-        dispatcher.utter_message(
-            text = "Corretto, il numero è giusto!"
-        )   
-        return {"numero": slot_value, "numero_errori": erroriTot}
+        else:
+            if errori == -1:
+                errori = 0
+                erroriTot = errori
+                dispatcher.utter_message(
+                    text = "Corretto, il numero è giusto!"
+                )   
+                return {"numero": slot_value, "numero_errori": erroriTot}
+            else:
+                erroriTot = errori
+                dispatcher.utter_message(
+                    text = "Corretto, il numero è giusto!"
+                )   
+                return {"numero": slot_value, "numero_errori": erroriTot}
 
 class ActionRestart(Action):
     def name(self) -> Text:

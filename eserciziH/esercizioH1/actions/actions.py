@@ -174,10 +174,18 @@ class ValidatePlayForm(FormValidationAction):
 
         global errori
         if slot_value.lower() == "apro la macchinetta":
-            dispatcher.utter_message(
-                text= "Corretto"
-            )
-            return{"passo1": slot_value}
+            if errori == -1:
+                errori = 0
+                dispatcher.utter_message(
+                    text= "Corretto"
+                )
+                return{"passo1": slot_value}
+            else:
+                dispatcher.utter_message(
+                    text= "Corretto"
+                )
+                return{"passo1": slot_value}
+
         else:
             if errori == -1:
                 errori = 1

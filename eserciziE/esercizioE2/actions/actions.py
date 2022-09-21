@@ -81,10 +81,17 @@ class ValidatePlayForm(FormValidationAction):
         
         global errori
         if slot_value.lower() == "5":
-            dispatcher.utter_message(
-                text= "Corretto, la risposta è giusta"
-            )
-            return {"numero_ranocchi": slot_value}
+            if errori == -1:
+                errori = 0
+                dispatcher.utter_message(
+                    text= "Corretto, la risposta è giusta"
+                )
+                return {"numero_ranocchi": slot_value}
+            else:
+                dispatcher.utter_message(
+                    text= "Corretto, la risposta è giusta"
+                )
+                return {"numero_ranocchi": slot_value}
         else:
             if errori == -1:
                 errori = 1

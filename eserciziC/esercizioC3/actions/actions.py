@@ -152,11 +152,18 @@ class ValidatePlayForm(FormValidationAction):
 
         global risposte_errate
         if slot_value.lower() in self.lista_frutta():
-            self.lista_frutta().remove(slot_value.lower())
-            dispatcher.utter_message(
-                text= "Corretto"
-            )
-            return{"domanda1": slot_value}
+            if risposte_errate == -1:
+                risposte_errate = 0
+                self.lista_frutta().remove(slot_value.lower())
+                dispatcher.utter_message(
+                    text= "Corretto"
+                )
+                return{"domanda1": slot_value}
+            else:
+                dispatcher.utter_message(
+                    text= "Corretto"
+                )
+                return{"domanda1": slot_value}
         else:
             if risposte_errate == -1:
                 risposte_errate = 1

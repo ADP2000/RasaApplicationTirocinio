@@ -88,11 +88,19 @@ class ValidatePlayForm(FormValidationAction):
                 dispatcher.utter_message(text = "Purtroppo hai sbagliato.\nDai riprova")
                 return {"numero_palla": None}
 
-         
-        dispatcher.utter_message(
-            text = "Corretto, il numero è giusto!"
-        )   
-        return {"numero_palla": slot_value}
+        else:
+            if errori == -1:
+                errori = 0        
+                dispatcher.utter_message(
+                    text = "Corretto, il numero è giusto!"
+                )   
+                return {"numero_palla": slot_value}
+            else:
+                dispatcher.utter_message(
+                    text = "Corretto, il numero è giusto!"
+                )   
+                return {"numero_palla": slot_value}
+                
 
     def validate_numero_palla2(
         self,
