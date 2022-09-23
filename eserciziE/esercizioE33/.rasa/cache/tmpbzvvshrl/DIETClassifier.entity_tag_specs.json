@@ -1,0 +1,44 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-name",
+      "2": "I-name",
+      "3": "L-name",
+      "4": "U-name",
+      "5": "B-numero_cavallo",
+      "6": "I-numero_cavallo",
+      "7": "L-numero_cavallo",
+      "8": "U-numero_cavallo",
+      "9": "B-numero_espressione",
+      "10": "I-numero_espressione",
+      "11": "L-numero_espressione",
+      "12": "U-numero_espressione",
+      "13": "B-numero_groppa",
+      "14": "I-numero_groppa",
+      "15": "L-numero_groppa",
+      "16": "U-numero_groppa",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-name": 1,
+      "I-name": 2,
+      "L-name": 3,
+      "U-name": 4,
+      "B-numero_cavallo": 5,
+      "I-numero_cavallo": 6,
+      "L-numero_cavallo": 7,
+      "U-numero_cavallo": 8,
+      "B-numero_espressione": 9,
+      "I-numero_espressione": 10,
+      "L-numero_espressione": 11,
+      "U-numero_espressione": 12,
+      "B-numero_groppa": 13,
+      "I-numero_groppa": 14,
+      "L-numero_groppa": 15,
+      "U-numero_groppa": 16,
+      "O": 0
+    },
+    "num_tags": 17
+  }
+]
