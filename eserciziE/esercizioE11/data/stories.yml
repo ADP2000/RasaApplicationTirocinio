@@ -51,3 +51,6 @@ stories:
   - intent: affirm
   - action: utter_conferma_gioco
 
+
+
+

@@ -15,7 +15,7 @@ intents:
 
 entities:
 - name
-- numero_ma
+- numero_agnello
 
 
 slots:
@@ -25,12 +25,12 @@ slots:
     mappings:
     - type: from_entity
       entity: name
-  numero_ma:
+  numero_agnello:
     type: text
     influence_conversation: true
     mappings: 
     - type: from_entity
-      entity: numero_ma
+      entity: numero_agnello
   numero_errori:
     type: float
     influence_conversation: false
@@ -40,8 +40,7 @@ slots:
 forms: 
   play_form:
     required_slots:
-    - numero_ma
-
+    - numero_agnello
   
 
 responses:
@@ -61,8 +60,8 @@ responses:
 
   utter_descrizione_gioco:
   - text: |- 
-      OK! Ti presento allora il funzionamento di questo gioco. Dovrai sentire un racconto dovrai dirmi
-      quante volte hai sentito pronunciare la parola 'ma'.
+      OK! Ti presento allora il funzionamento di questo gioco. Dovrai sentire un racconto e
+      fare attenzione a quante volte viene pronunciata la parola 'agnello'.
 
   utter_storia:
   - text: |- 
@@ -109,7 +108,7 @@ responses:
 
 actions:
 - action_restart
-- action_ask_numero_ma
+- action_ask_numero_agnello
 - action_fine
 - action_storia
 - validate_play_form

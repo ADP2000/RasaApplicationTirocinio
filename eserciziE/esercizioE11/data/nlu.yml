@@ -89,11 +89,13 @@ nlu:
 
 - intent: inform
   examples: |
-    - [1](numero_ma)
-    - [2](numero_ma)
-    - [3](numero_ma)
-    - [4](numero_ma)
-    - [5](numero_ma)
-    - [6](numero_ma)
-    - [7](numero_ma)
+    - [1](numero_agnello)
+    - [2](numero_agnello)
+    - [3](numero_agnello)
+    - [4](numero_agnello)
+    - [5](numero_agnello)
+    - [6](numero_agnello)
+    - [7](numero_agnello)
+    - [8](numero_agnello)
+    - [9](numero_agnello)
     

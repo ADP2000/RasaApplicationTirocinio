@@ -12,7 +12,6 @@ from rasa_sdk.events import EventType, Restarted
 from rasa_sdk import Action, Tracker , FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
-
 storia = """"“Un giorno un lupo vide un agnello che bevevo presso un torrente e gli venne voglia di mangiarselo, ma con quale scusa? 
       Allora, standosene là a monte, cominciò ad accusarlo di sporcare l’acqua, così egli non poteva bere. 
       L’agnello gli fece notare che, per bere, sfiorava appena l’acqua col muso e che, stando a valle, non gli era possibile sporcare l’acqua che scorreva sopra di lui. 
@@ -32,17 +31,15 @@ class ActionRestart(Action):
         dispatcher.utter_message(text="Digita di nuovo 'iniziamo' per giocare di nuovo")
         return [Restarted()]
 
-
-class ActionNumeroMaAsk(Action):
+class ActionNumeroAgnelloAsk(Action):
     def name(self) -> Text:
-        return "action_ask_numero_ma"
+        return "action_ask_numero_agnello"
 
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
         dispatcher.utter_message(
-            text = "Quante volte viene ripetuta la parola 'ma'?"
+            text = "Quante volte viene ripetuta la parola agnello? \n\nRispondi nel seguente modo: 1,2,3,..."
         )
         return []
-
 
 class ActionStoria(Action):
     def name(self) -> Text:
@@ -75,7 +72,7 @@ class ValidatePlayForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_play_form"
 
-    def validate_numero_ma(
+    def validate_numero_agnello(
         self,
         slot_value: Any, 
         dispatcher: CollectingDispatcher,
@@ -83,30 +80,30 @@ class ValidatePlayForm(FormValidationAction):
         domain: DomainDict ) -> Dict[Text,Any]: 
 
         global risposte_errori
-        if slot_value.lower() == "4":
+        if slot_value.lower() == "5":
             if risposte_errori == -1:
                 risposte_errori = 0
                 dispatcher.utter_message(
                     text= "Corretto, la risposta è giusta"
                 )
-                return {"numero_ma": slot_value, "numero_errori": risposte_errori}
+                return {"numero_agnello": slot_value, "numero_errori": risposte_errori}
             else:
                 dispatcher.utter_message(
                     text= "Corretto, la risposta è giusta"
                 )
-                return {"numero_ma": slot_value, "numero_errori": risposte_errori}
+                return {"numero_agnello": slot_value, "numero_errori": risposte_errori}
         else:
             if risposte_errori == -1:
                 risposte_errori = 1
                 dispatcher.utter_message(
                     text= "OPS! Purtoppo hai sbagliato. Dai riprova."
                 )
-                return {"numero_ma": None}
+                return {"numero_agnello": None}
             else:
                 risposte_errori += 1
                 dispatcher.utter_message(
                     text= "OPS! Purtoppo hai sbagliato. Dai riprova."
                 )
-                return {"numero_ma": None}
+                return {"numero_agnello": None}
 
     
