@@ -6,12 +6,21 @@
 
 
 from typing import Any, Text, Dict, List
-
+import gtts
+import os
 from rasa_sdk.events import EventType, Restarted 
 from rasa_sdk import Action, Tracker , FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
-
+storia = """"“Un giorno un lupo vide un agnello che bevevo presso un torrente e gli venne voglia di mangiarselo, ma con quale scusa? 
+      Allora, standosene là a monte, cominciò ad accusarlo di sporcare l’acqua, così egli non poteva bere. 
+      L’agnello gli fece notare che, per bere, sfiorava appena l’acqua col muso e che, stando a valle, non gli era possibile sporcare l’acqua che scorreva sopra di lui. 
+      Ma a quel punto il lupo gli disse: “Non sei tu l’agnello che l’anno scorso ha insultato mio padre?”. 
+      Ma l’agnello gli fece notare che a quella data egli non era ancora nato. “Bene”! -Concluse allora il lupo - “Se tu, caro agnello, sei così bravo a trovar delle scuse, io non posso rinunciare a mangiarti!”. 
+      E se lo mangiò.” 
+      La favola mostra che ci si può difendere con l’intelligenza, ma se qualcuno ha deciso di farti un torto, non c’è giusta difesa che tenga. 
+      
+      ESOPO."""
 risposte_errori = -1
 
 class ActionRestart(Action):
@@ -32,26 +41,17 @@ class ActionNumeroAgnelloAsk(Action):
         )
         return []
 
-
-class ActionNumeroMaAsk(Action):
+class ActionStoria(Action):
     def name(self) -> Text:
-        return "action_ask_numero_ma"
+        return "action_storia"
 
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
         dispatcher.utter_message(
-            text = "Quante volte viene ripetuta la parola 'ma'? \nRispondi nel seguente modo: 1 volta,2 volte,3 volte,..."
+            text= storia
         )
-        return []
-
-
-class ActionNumeroEspressioneAsk(Action):
-    def name(self) -> Text:
-        return "action_ask_numero_espressione"
-
-    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
-        dispatcher.utter_message(
-            text = "Quante volte viene ripetuta la seguente espressione 'gli fece notare che'? \nRispondi nel seguente modo: 1 espressione,2 espressioni,3 espressioni,..."
-        )
+        tts = gtts.gTTS(storia, lang = "it")
+        tts.save("storia.mp3")
+        os.system("storia.mp3")
         return []
 
 class ActionFine(Action):
@@ -86,12 +86,12 @@ class ValidatePlayForm(FormValidationAction):
                 dispatcher.utter_message(
                     text= "Corretto, la risposta è giusta"
                 )
-                return {"numero_agnello": slot_value}
+                return {"numero_agnello": slot_value, "numero_errori": risposte_errori}
             else:
                 dispatcher.utter_message(
                     text= "Corretto, la risposta è giusta"
                 )
-                return {"numero_agnello": slot_value}
+                return {"numero_agnello": slot_value, "numero_errori": risposte_errori}
         else:
             if risposte_errori == -1:
                 risposte_errori = 1
@@ -106,45 +106,4 @@ class ValidatePlayForm(FormValidationAction):
                 )
                 return {"numero_agnello": None}
 
-    def validate_numero_ma(
-        self,
-        slot_value: Any, 
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: DomainDict ) -> Dict[Text,Any]: 
-
-        if slot_value.lower() == "4 volte":
-            dispatcher.utter_message(
-                text= "Corretto, la risposta è giusta"
-            )
-            return {"numero_ma": slot_value}
-        else:
-            global risposte_errori
-            risposte_errori += 1
-            dispatcher.utter_message(
-                text = "OPS! Hai sbagliato. Dai riprova"
-            )
-            return {"numero_ma": None}
-
-    def validate_numero_espressione(
-        self,
-        slot_value: Any, 
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: DomainDict ) -> Dict[Text,Any]: 
-
-        global risposte_errori
-        risposte = risposte_errori
-        if slot_value.lower() == "2 espressioni":
-            dispatcher.utter_message(
-                text= "Corretto, la risposta è giusta"
-            )
-            return {"numero_espressione": slot_value,
-                    "numero_errori": risposte,
-            }
-        else:
-            risposte_errori +=1
-            dispatcher.utter_message(
-                text = "OPS! Hai sbagliato. Dai riprova"
-            )
-            return {"numero_espressione": None}
+    

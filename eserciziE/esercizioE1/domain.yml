@@ -16,8 +16,7 @@ intents:
 entities:
 - name
 - numero_agnello
-- numero_ma
-- numero_espressione
+
 
 slots:
   name:
@@ -32,18 +31,6 @@ slots:
     mappings: 
     - type: from_entity
       entity: numero_agnello
-  numero_ma:
-    type: text
-    influence_conversation: true
-    mappings: 
-    - type: from_entity
-      entity: numero_ma
-  numero_espressione:
-    type: text
-    influence_conversation: true
-    mappings: 
-    - type: from_entity
-      entity: numero_espressione
   numero_errori:
     type: float
     influence_conversation: false
@@ -54,8 +41,6 @@ forms:
   play_form:
     required_slots:
     - numero_agnello
-    - numero_ma
-    - numero_espressione
   
 
 responses:
@@ -75,8 +60,8 @@ responses:
 
   utter_descrizione_gioco:
   - text: |- 
-      OK! Ti presento allora il funzionamento di questo gioco. Dovrai leggere un racconto e, una volta 
-      letto, ti chiederò quante volte certe parole vengono ripetute nel testo.
+      OK! Ti presento allora il funzionamento di questo gioco. Dovrai sentire un racconto e
+      fare attenzione a quante volte viene pronunciata la parola 'agnello'.
 
   utter_storia:
   - text: |- 
@@ -124,9 +109,8 @@ responses:
 actions:
 - action_restart
 - action_ask_numero_agnello
-- action_ask_numero_ma
-- action_ask_numero_espressione
 - action_fine
+- action_storia
 - validate_play_form
 
 session_config:

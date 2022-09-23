@@ -15,7 +15,7 @@ rules:
 - rule: Activate Play Form 
   steps:
   - intent: gioco
-  - action: utter_storia
+  - action: action_storia
   - action: play_form
   - active_loop: play_form
 
