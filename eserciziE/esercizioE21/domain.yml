@@ -16,8 +16,6 @@ intents:
 entities:
 - name
 - numero_ranocchi
-- numero_altri
-- numero_espressione
 
 slots:
   name:
@@ -32,18 +30,6 @@ slots:
     mappings: 
     - type: from_entity
       entity: numero_ranocchi
-  numero_altri:
-    type: text
-    influence_conversation: true
-    mappings: 
-    - type: from_entity
-      entity: numero_altri
-  numero_espressione:
-    type: text
-    influence_conversation: true
-    mappings: 
-    - type: from_entity
-      entity: numero_espressione
   numero_errori:
     type: float
     influence_conversation: false
@@ -55,8 +41,7 @@ forms:
   play_form:
     required_slots:
     - numero_ranocchi
-    - numero_altri
-    - numero_espressione
+    
   
 
 responses:
@@ -76,8 +61,8 @@ responses:
 
   utter_descrizione_gioco:
   - text: |- 
-      OK! Ti presento allora il funzionamento di questo gioco. Dovrai leggere un racconto e, una volta 
-      letto, ti chiederò quante volte certe parole vengono ripetute nel testo.
+      OK! Ti presento allora il funzionamento di questo gioco. Dovrai sentire un racconto e facendo attenzione 
+      a quante volte viene ripetuta la parola ranocchio.
 
   utter_storia:
   - text: |- 
@@ -130,8 +115,7 @@ responses:
 actions:
 - action_restart
 - action_ask_numero_ranocchi
-- action_ask_numero_altri
-- action_ask_numero_espressione
+- action_storia
 - action_fine
 - validate_play_form
 
