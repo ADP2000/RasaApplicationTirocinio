@@ -10,12 +10,31 @@ from rasa_sdk.events import EventType, Restarted
 from rasa_sdk import Action, Tracker , FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
-
+import gtts
+import os
 risposte_errate = -1
 fruit_list = ["fragole", "mandarini", "kiwi"]
 product_list = ["senape", "maionese", "tonno"]
 school_list = ["diario", "zaino", "astuccio"]
+prodotti = """
+      Tonno,
 
+      Diario,
+
+      Fragole,
+
+      Kiwi,
+
+      Astuccio,
+
+      Mandarini,
+
+      Senape,
+
+      Maionese,
+
+      Zaino.
+"""
 class ActionRestart(Action):
     def name(self) -> Text:
         return "action_restart"
@@ -112,6 +131,19 @@ class ActionDomanda9ASk(Action):
         dispatcher.utter_message(
             text ="\n\nSono ancora nel reparto materiali scolastici, che cos'altro devo comprare?"
         )
+        return []
+
+class ActionProdotti(Action):
+    def name(self) -> Text:
+        return "action_prodotti"
+
+    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
+        # dispatcher.utter_message(
+        #     text= prodotti
+        # )
+        tts = gtts.gTTS(prodotti, lang = "it")
+        tts.save("prodotti.mp3")
+        os.system("prodotti.mp3")
         return []
 
 class ActionFine(Action):

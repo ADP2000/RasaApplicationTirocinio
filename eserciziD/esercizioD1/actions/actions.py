@@ -28,7 +28,7 @@ class AskForNumeroPallaAction(Action):
     
 
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
-        parole = "MOLLA PELLE PALLA POLLO SOLE ALBERO RANA PALLA PINO PALLA PELATI PALLA"
+        parole = "ORSO, PELLE, PALLA, POLIPO, SOLE, ALBERO, RANA, PALLA, PINO, PALLA, PINO, PALLA"
         dispatcher.utter_message(text = "\nQuante volte ho scritto la parola palla?"
         + "\nRispondi con un numero: 1,2,3...") 
         tts = gtts.gTTS(parole, lang = "it")
@@ -43,7 +43,7 @@ class AskForNumeroPalla2Action(Action):
     
 
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
-        parole = "PALLA PELLE BOLLA PALLA BALLA PAROLA BALLA PALLA MOLLA COLLA"
+        parole = "PALLA, PELLE, BOLLA, MOLLA, PALLA, BALLA, PAROLA, BALLA, PALLA, MOLLA, COLLA"
         dispatcher.utter_message(text = "Passiamo ora ad un livello più difficile."+
         "\nQuante volte ho detto la parola palla?"
         + "\nRispondi con un numero: 1 palla,2 palle,3 palle...") 

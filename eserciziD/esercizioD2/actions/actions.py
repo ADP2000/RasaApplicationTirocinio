@@ -28,7 +28,7 @@ class AskForNumeroAction(Action):
     
 
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
-        parole = "IMBACUCCATO ACCUCCIATO IMBACUCCATO ASSONNATO IMPACCIATO IMBACUCCATO IMBAMBOLATO IMPICCATO INSTRADATO IMBACUCCATO IMBRANATO IMBACUCCATO ANNOIATO" 
+        parole = "IMBACUCCATO, ACCUCCIATO, IMBACUCCATO, ASSONNATO, IMPACCIATO, IMBACUCCATO, IMBAMBOLATO, IMPICCATO, INSTRADATO, IMBACUCCATO, IMBRANATO, IMBACUCCATO, ANNOIATO" 
         tts = gtts.gTTS(parole, lang = "it")
         tts.save("parole.mp3")
         os.system("parole.mp3")  
