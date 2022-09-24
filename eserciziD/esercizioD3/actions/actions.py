@@ -11,7 +11,8 @@ from ctypes import string_at
 from pdb import Restart
 from random import Random, randint
 from typing import Any, Text, Dict, List
-
+import gtts
+import os
 from rasa_sdk.events import EventType, Restarted 
 from rasa_sdk import Action, Tracker , FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
@@ -27,10 +28,13 @@ class AskForNumeroAction(Action):
     
 
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
-        
-        dispatcher.utter_message(text = "ASSASSI TASSASSI ASSASSI RETASSI ASSASSI MENANASSI MARASSI ASSASSI ANANASSI ASSASSI PARASSI ASSASSI FASSASSI SANSASSI RAGAGASSI" +
-        "\nQuante volte ho scritto la parola ASSASSI?"
-        + "\nRispondi con un numero: 1,2,3...")                
+        parole = "ASSASSI TASSASSI ASSASSI RETASSI ASSASSI MENANASSI MARASSI ASSASSI ANANASSI ASSASSI PARASSI ASSASSI FASSASSI SANSASSI RAGAGASSI" 
+        dispatcher.utter_message(text = 
+        "\nQuante volte ho detto la parola ASSASSI?"
+        + "\nRispondi con un numero: 1,2,3...")  
+        tts = gtts.gTTS(parole, lang = "it")
+        tts.save("parole.mp3")
+        os.system("parole.mp3")                
         return []
     
 class ActionFine(Action):

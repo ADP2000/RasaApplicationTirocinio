@@ -11,7 +11,8 @@ from ctypes import string_at
 from pdb import Restart
 from random import Random, randint
 from typing import Any, Text, Dict, List
-
+import gtts
+import os
 from rasa_sdk.events import EventType, Restarted 
 from rasa_sdk import Action, Tracker , FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
@@ -27,10 +28,12 @@ class AskForNumeroPallaAction(Action):
     
 
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
-        
-        dispatcher.utter_message(text = "MOLLA PELLE PALLA POLLO SOLE ALBERO RANA PALLA PINO PALLA PELATI PALLA" +
-        "\nQuante volte ho scritto la parola palla?"
-        + "\nRispondi con un numero: 1,2,3...")                
+        parole = "MOLLA PELLE PALLA POLLO SOLE ALBERO RANA PALLA PINO PALLA PELATI PALLA"
+        dispatcher.utter_message(text = "\nQuante volte ho scritto la parola palla?"
+        + "\nRispondi con un numero: 1,2,3...") 
+        tts = gtts.gTTS(parole, lang = "it")
+        tts.save("parole1.mp3")
+        os.system("parole1.mp3")           
         return []
     
 class AskForNumeroPalla2Action(Action):
@@ -40,11 +43,13 @@ class AskForNumeroPalla2Action(Action):
     
 
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
-        
+        parole = "PALLA PELLE BOLLA PALLA BALLA PAROLA BALLA PALLA MOLLA COLLA"
         dispatcher.utter_message(text = "Passiamo ora ad un livello più difficile."+
-        "\nPALLA PELLE BOLLA PALLA BALLA PAROLA BALLA PALLA MOLLA COLLA" +
-        "\nQuante volte ho scritto la parola palla?"
-        + "\nRispondi con un numero: 1 palla,2 palle,3 palle...")                
+        "\nQuante volte ho detto la parola palla?"
+        + "\nRispondi con un numero: 1 palla,2 palle,3 palle...") 
+        tts = gtts.gTTS(parole, lang = "it")
+        tts.save("parole2.mp3")
+        os.system("parole2.mp3")               
         return []
 
 class ActionFine(Action):
