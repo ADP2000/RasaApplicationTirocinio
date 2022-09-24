@@ -15,7 +15,7 @@ rules:
 - rule: Activate Play Form 
   steps:
   - intent: gioco
-  - action: utter_lista_spesa
+  - action: action_prodotti
   - action: play_form
   - active_loop: play_form
 

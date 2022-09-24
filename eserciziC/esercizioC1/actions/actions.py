@@ -148,9 +148,9 @@ class ActionProdotti(Action):
         return "action_prodotti"
 
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
-        dispatcher.utter_message(
-            text= prodotti
-        )
+        # dispatcher.utter_message(
+        #     text= prodotti
+        # )
         tts = gtts.gTTS(prodotti, lang = "it")
         tts.save("prodotti.mp3")
         os.system("prodotti.mp3")
