@@ -10,7 +10,7 @@ WORKDIR /app
 USER root
 
 # Install extra requirements for actions code, if necessary (uncomment next line)
-
+RUN pip install gTTS
 # Copy actions folder to working directory
 COPY ./actions /app/actions
 

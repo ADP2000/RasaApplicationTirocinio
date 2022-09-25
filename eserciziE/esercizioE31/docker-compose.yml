@@ -14,6 +14,6 @@ services:
       - --cors
       - "*"
   app:
-    image: adp2000/prova_rasa:esercizioE3
+    image: adp2000/prova_rasa:esercizioE31
     ports:
       - 5055:5055
