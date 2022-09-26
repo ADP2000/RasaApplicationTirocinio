@@ -7,7 +7,8 @@
 
 from typing import Any, Text, Dict, List
 import gtts
-import os
+import pygame
+from io import BytesIO
 from rasa_sdk.events import EventType, Restarted 
 from rasa_sdk import Action, Tracker , FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
@@ -57,9 +58,15 @@ class ActionStoria(Action):
         dispatcher.utter_message(
             text= storia
         )
-        tts = gtts.gTTS(storia, lang = "it")
-        tts.save("storia.mp3")
-        os.system("storia.mp3")
+        def speak(text, language = 'it'):
+            mp3_fo = BytesIO()
+            tts = gtts.gTTS(text,lang = language)
+            tts.write_to_fp(mp3_fo)
+            return mp3_fo
+        pygame.mixer.init()
+        sound = speak(storia)
+        pygame.mixer.music.load(sound, 'mp3')
+        pygame.mixer.music.play()
         return []
 
 class ActionFine(Action):
