@@ -12,7 +12,7 @@ from eserciziD.eserciziD import lista_eserciziD
 from eserciziE.eserciziE import lista_eserciziE
 from eserciziH.eserciziH import lista_eserciziH
 
-client = MongoClient("mongodb+srv://adp2000:provamongo@cluster0.3a73ecz.mongodb.net/?retryWrites=true&w=majority")
+client = MongoClient("mongodb+srv://adp2000:provamongo@cluster0.gla1knd.mongodb.net/test")
 db = client.rasa
 sessionResultCollection = db.sessionResult
 
