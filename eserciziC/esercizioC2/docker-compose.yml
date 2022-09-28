@@ -17,3 +17,8 @@ services:
     image: adp2000/prova_rasa:esercizioC2
     ports:
       - 5055:5055
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: adp2000
+      MONGO_INITDB_ROOT_PASSWORD: provamongo

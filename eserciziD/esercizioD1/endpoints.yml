@@ -40,3 +40,10 @@ action_endpoint:
 #  username: username
 #  password: password
 #  queue: queue
+tracker_store:
+     type: mongod
+     url: mongodb+srv://adp2000:provamongo@cluster0.3a73ecz.mongodb.net/?retryWrites=true&w=majority
+     db: rasa
+     username: adp2000
+     password: provamongo
+     collection: conversationsD1
