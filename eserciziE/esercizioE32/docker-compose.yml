@@ -22,3 +22,10 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: adp2000
       MONGO_INITDB_ROOT_PASSWORD: provamongo
+  apache:
+    image: httpd:latest
+    container_name: my-apache-appE32
+    ports:
+    - '8080:80'
+    volumes:
+    - ./website:/usr/local/apache2/htdocs
