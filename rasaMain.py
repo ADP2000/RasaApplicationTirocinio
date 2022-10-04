@@ -37,11 +37,9 @@ for esercizio in lista_esercizi:
 
 endpoint = "http://127.0.0.1:8000/session"        
 risposta = requests.get(endpoint)
-# with open("sessione.json", "w") as outfile:
-#     json.dump(risposta,outfile,indent=4)
 
 sessionID = risposta.json()['id']
-esercizi = list(risposta.json()['exercises'])  #lista degli esercizi da somministrare con id, nome e livello
+esercizi = list(risposta.json()['exercises'])           #lista degli esercizi da somministrare con id, nome e livello
 
 def getEsercizi(esercizi) -> List[Esercizio]:
     nomiEsercizi = []
