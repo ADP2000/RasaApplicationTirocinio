@@ -30,7 +30,7 @@ class AskForNumeroPallaAction(Action):
 
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker, domain: "DomainDict") -> List[Dict[Text, Any]]:
         parole = "ORSO, PELLE, PALLA, POLIPO, SOLE, ALBERO, RANA, PALLA, PINO, PALLA, PINO, PALLA"
-        dispatcher.utter_message(text = "\nQuante volte ho scritto la parola palla?"
+        dispatcher.utter_message(text = "\nQuante volte ho detto la parola palla?"
         + "\nRispondi con un numero: 1,2,3...") 
         def speak(text, language = 'it'):
             mp3_fo = BytesIO()
